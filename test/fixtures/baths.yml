@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2023-07-27 13:28:07
+  memo: MyText
+  user_id: 1
+
+two:
+  time: 2023-07-27 13:28:07
+  memo: MyText
+  user_id: 1

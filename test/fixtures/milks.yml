@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kinds: MyString
+  amount: 1
+  time: 2023-07-27 13:25:37
+  memo: MyText
+  user_id: 1
+
+two:
+  kinds: MyString
+  amount: 1
+  time: 2023-07-27 13:25:37
+  memo: MyText
+  user_id: 1

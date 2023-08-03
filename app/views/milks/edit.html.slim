@@ -1,0 +1,19 @@
+h1 ミルクの編集
+
+.nav.justify-content-end 
+  = link_to 'ミルク一覧', milks_path, class: 'nav-link'
+
+= form_with model: @milk, local: true do |f|
+  .form-group 
+    = f.label :kinds
+    = f.select :kinds,[['ミルク','ミルク'],['母乳','母乳']],include_blank: '選択してください', class: 'form-control', id: 'milk_kinds'
+  .form-group 
+    = f.label :amount
+    = f.number_field :amount, class: 'form-control', id: 'milk_amount'
+  .form-group 
+    = f.label :time
+    = f.time_field :time, class:'form-control', id: 'milk_time'
+  .form-group 
+    = f.label :memo
+    = f.text_area :memo, class:'form-group', id: 'milk_memo'
+  = f.submit '登録する', class: 'btn btn-primary'

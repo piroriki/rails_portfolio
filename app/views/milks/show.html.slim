@@ -1,0 +1,30 @@
+h1 ミルクの詳細内容
+
+nav.justify-content-end 
+  = link_to 'ミルク一覧', milks_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Milk.human_attribute_name(:id)
+      td = @milk.id
+    tr 
+      th = Milk.human_attribute_name(:kinds)
+      td = @milk.kinds
+    tr 
+      th = Milk.human_attribute_name(:amount)
+      td = @milk.amount
+    tr 
+      th = Milk.human_attribute_name(:time)
+      td = @milk.time
+    tr 
+      th = Milk.human_attribute_name(:memo)
+      td = simple_format(h(@milk.memo), {}, sanitize: false, wrapper_tag: "div")
+    tr 
+      th = Milk.human_attribute_name(:created_at)
+      td = @milk.created_at
+    tr 
+      th = Milk.human_attribute_name(:updated_at)
+      td = @milk.updated_at
+
+= link_to '編集', edit_milk_path, class: 'btn btn-primary mr-3'

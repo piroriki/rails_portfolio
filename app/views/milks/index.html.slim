@@ -1,0 +1,25 @@
+h1 ミルクの記録一覧
+
+= link_to '新規登録', new_milk_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Milk.human_attribute_name(:kinds)
+      th = Milk.human_attribute_name(:amount)
+      th = Milk.human_attribute_name(:time)
+      th = Milk.human_attribute_name(:memo)
+      th = Milk.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @milks.each do |milk|
+      tr 
+        td = link_to milk.kinds, milk_path(milk) 
+        td = milk.amount 
+        td = milk.time 
+        td = milk.memo 
+        td = milk.created_at
+        td
+          = link_to '編集', edit_milk_path(milk), class:'btn btn-primary mr-3'

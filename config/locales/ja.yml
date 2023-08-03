@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    errors:
+      message:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "#{record}が存在しているので削除できません"
+    models:
+      milk: ミルク
+    attributes:
+      milk:
+        id: ID
+        kinds: 種類
+        amount: 量
+        time: 時間
+        memo: メモ
+        created_at: 登録日時
+        updated_at: 更新日時

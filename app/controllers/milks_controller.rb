@@ -12,9 +12,9 @@ class MilksController < ApplicationController
   end
 
   def create
-    milk = Milk.new(milk_params)
-    if milk.save
-      redirect_to root_path, notice: "登録完了しました"
+    @milk = Milk.new(milk_params)
+    if @milk.save!
+      redirect_to root_path(@milk), notice: "登録完了しました"
     else
       render :new
     end
@@ -25,12 +25,18 @@ class MilksController < ApplicationController
   end
 
   def update
-    milk = Milk.find(params[:id])
-    if milk.update!(milk_params)
+    @milk = Milk.find(params[:id])
+    if @milk.update!(milk_params)
       redirect_to milks_path, notice: "更新完了しました"
     else
       render :edit
     end
+  end
+
+  def destroy
+      milk = Milk.find(params[:id])
+      milk.destroy
+      redirect_to milks_path, notice: '削除完了しました'
   end
 
   private

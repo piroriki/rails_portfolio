@@ -1,3 +1,8 @@
+- if milk.errors.present?
+  ul#error_explanation 
+    - milk.errors.full_message.each do |message|
+    li = message
+
 = form_with model: milk, locale: true do |f|
     .form-group 
       = f.label :kinds

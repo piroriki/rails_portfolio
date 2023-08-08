@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_044948) do
   enable_extension "plpgsql"
 
   create_table "baths", force: :cascade do |t|
-    t.datetime "time"
-    t.text "memo"
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,56 +30,56 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_044948) do
   end
 
   create_table "excretions", force: :cascade do |t|
-    t.string "kinds"
-    t.datetime "time"
-    t.text "memo"
+    t.string "kinds", null: false
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "kinds"
-    t.text "amount"
-    t.datetime "time"
-    t.text "memo"
+    t.string "kinds", null: false
+    t.text "amount", null: false
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "medicines", force: :cascade do |t|
-    t.string "kinds"
-    t.datetime "time"
-    t.text "memo"
+    t.string "kinds", null: false
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "milks", force: :cascade do |t|
-    t.string "kinds"
-    t.integer "amount"
-    t.datetime "time"
-    t.text "memo"
+    t.string "kinds", null: false
+    t.integer "amount", null: false
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "symptoms", force: :cascade do |t|
-    t.string "kinds"
-    t.datetime "time"
-    t.text "memo"
+    t.string "kinds", null: false
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "vaccinations", force: :cascade do |t|
-    t.string "kinds"
-    t.datetime "time"
-    t.text "memo"
+    t.string "kinds", null: false
+    t.datetime "time", null: false
+    t.text "memo", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

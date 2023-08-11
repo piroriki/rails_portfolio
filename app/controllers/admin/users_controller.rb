@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @user = Users.all
+    @users = User.all
   end
 
   def destroy

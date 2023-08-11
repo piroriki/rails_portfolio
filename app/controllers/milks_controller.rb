@@ -1,10 +1,11 @@
 class MilksController < ApplicationController
+
+  before_action :set_milk, only: [:show, :edit, :update, :destroy]
+
   def show
-    @milk = current_user.milks.find(params[:id])
   end
 
   def index
-    @milks = current_user.milks
   end
 
   def new
@@ -15,7 +16,7 @@ class MilksController < ApplicationController
     @milk = current_user.milks.new(milk_params)
 
     if @milk.save
-      redirect_to root_path(@milk), notice: "登録完了しました"
+      redirect_to milks_path(@milk), notice: "登録完了しました"
     else
       render :new
     end
@@ -23,13 +24,10 @@ class MilksController < ApplicationController
   end
 
   def edit
-    @milk = current_user.milks.find(params[:id])
   end
 
   def update
-    @milk = current_user.milks.find(params[:id])
-
-    if @milk.update(milk_params)
+    @milk.update!(milk_params)
       redirect_to milks_path, notice: "更新完了しました"
     else
       render :edit
@@ -38,9 +36,7 @@ class MilksController < ApplicationController
   end
 
   def destroy
-      milk = current_user.milks.find(params[:id])
-
-      milk.destroy
+      @milk.destroy
       redirect_to milks_path, notice: '削除完了しました'
   end
 
@@ -48,6 +44,10 @@ class MilksController < ApplicationController
 
   def milk_params
     params.require(:milk).permit(:kinds, :amount, :time, :memo).merge(user_id: current_user.id)
+  end
+
+  def set_milk
+    @milk = current_user.milks.find(params[:id])
   end
   
 end

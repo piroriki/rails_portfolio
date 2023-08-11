@@ -5,8 +5,12 @@
 
 = form_with model: milk, locale: true do |f|
     .form-group 
-      = f.label :kinds
-      = f.select :kinds,[['ミルク','ミルク'],['母乳','母乳']],include_blank: '選択してください', class: 'form-control', id: 'milk_kinds'
+      = f.radio_button :kinds, :milk
+      = f.label :milk, 'ミルク', { value: :milk, style: 'display: inline-block;'}
+
+      = f.radio_button :kinds, :breast_milk
+      = f.label :breast_milk, "母乳", { value: :breast_milk, style: 'display: inline-block;'}
+
     .form-group 
       = f.label :amount
       = f.number_field :amount, class: 'form-control', id: 'milk_amount'

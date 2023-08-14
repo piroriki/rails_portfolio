@@ -1,2 +1,26 @@
-h1 Meals#index
-p Find me in app/views/meals/index.html.slim
+h1 食事の記録一覧
+
+= link_to '新規登録', new_meal_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Meal.human_attribute_name(:kinds)
+      th = Meal.human_attribute_name(:amount)
+      th = Meal.human_attribute_name(:time)
+      th = Meal.human_attribute_name(:memo)
+      th = Meal.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @meals.each do |meal|
+      tr 
+        td = link_to meal.kinds, meal_path(meal) 
+        td = meal.amount 
+        td = l meal.time 
+        td = meal.memo 
+        td = l meal.created_at
+        td
+          = link_to '編集', edit_meal_path(meal), class:'btn btn-primary mr-3'
+          = link_to '削除', meal_path(meal), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

@@ -1,2 +1,31 @@
-h1 Meals#show
-p Find me in app/views/meals/show.html.slim
+h1 食事の詳細内容
+
+nav.justify-content-end 
+  = link_to '食事一覧', meals_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Meal.human_attribute_name(:id)
+      td = @meal.id
+    tr 
+      th = Meal.human_attribute_name(:kinds)
+      td = @meal.kinds
+    tr 
+      th = Meal.human_attribute_name(:amount)
+      td = @meal.amount
+    tr 
+      th = Meal.human_attribute_name(:time)
+      td = @meal.time
+    tr 
+      th = Meal.human_attribute_name(:memo)
+      td = auto_link(simple_format(h(@meal.memo), {}, sanitize: false, wrapper_tag: "div"))
+    tr 
+      th = Meal.human_attribute_name(:created_at)
+      td = @meal.created_at
+    tr 
+      th = Meal.human_attribute_name(:updated_at)
+      td = @meal.updated_at
+
+= link_to '編集', edit_meal_path, class: 'btn btn-primary mr-3'
+= link_to '削除', meal_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

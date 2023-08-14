@@ -15,10 +15,13 @@
     .form-group 
       = f.label :amount
       = f.number_field :amount, class: 'form-control', id: 'milk_amount'
+
     .form-group 
       = f.label :time
       = f.time_field :time, class:'form-control', id: 'milk_time'
+
     .form-group 
       = f.label :memo
       = f.text_area :memo, class:'form-group', id: 'milk_memo'
+      
     = f.submit '登録する', class: 'btn btn-primary'

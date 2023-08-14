@@ -1,2 +1,6 @@
-h1 Meals#edit
-p Find me in app/views/meals/edit.html.slim
+h1 食事の編集
+
+.nav.justify-content-end 
+  = link_to '食事一覧', meals_path, class: 'nav-link'
+
+= render partial: 'form', locals: { meal: @meal }

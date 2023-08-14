@@ -1,0 +1,30 @@
+- if meal.errors.present?
+  ul#error_explanation 
+    - meal.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: meal, local: true do |f|
+
+    .form-group 
+      = f.radio_button :kinds, :meal
+      = f.label :meal, 'ごはん', { value: :meal, style: 'display: inline-block;'}
+
+      = f.radio_button :kinds, :snack
+      = f.label :snack, 'おやつ', { value: :snack, style: 'display: inline-block;'}
+
+      = f.radio_button :kinds, :drink
+      = f.label :drink, '飲み物', { value: :drink, style: 'display:inline-block;'}
+
+    .form-group 
+      = f.label :amount
+      = f.number_field :amount, class: 'form-control', id: 'milk_amount'
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'milk_time'
+
+    .form-group 
+      = f.label :memo
+      = f.text_area :memo, class:'form-group', id: 'milk_memo'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

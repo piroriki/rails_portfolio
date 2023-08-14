@@ -16,10 +16,10 @@ class MilksController < ApplicationController
   def create
     @milk = current_user.milks.new(milk_params)
 
-    if @milk.save!
-      redirect_to milks_path(@milk), notice: "登録完了しました"
+    if @milk.save
+      redirect_to milks_path, notice: '登録完了しました'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
 
   end
@@ -29,7 +29,7 @@ class MilksController < ApplicationController
 
   def update
 
-    if @milk.update!(milk_params)
+    if @milk.update(milk_params)
       redirect_to milks_path, notice: "更新完了しました"
     else
       render :edit

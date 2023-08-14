@@ -1,9 +1,10 @@
 - if milk.errors.present?
   ul#error_explanation 
-    - milk.errors.full_message.each do |message|
-    li = message
+    - milk.errors.full_messages.each do |message|
+      li = message
 
-= form_with model: milk, locale: true do |f|
+= form_with model: milk, local: true do |f|
+
     .form-group 
       = f.radio_button :kinds, :milk
       = f.label :milk, 'ミルク', { value: :milk, style: 'display: inline-block;'}

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'meals/index'
+  get 'meals/show'
+  get 'meals/edit'
+  get 'meals/new'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

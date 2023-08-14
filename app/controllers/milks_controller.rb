@@ -28,13 +28,11 @@ class MilksController < ApplicationController
   end
 
   def update
-
     if @milk.update(milk_params)
       redirect_to milks_path, notice: "更新完了しました"
     else
       render :edit
     end
-
   end
 
   def destroy

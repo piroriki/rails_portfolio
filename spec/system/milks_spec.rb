@@ -19,5 +19,19 @@ RSpec.describe 'ミルク管理機能', type: :system do
                 expect(page).to have_content 'テスト'
             end
         end
+
+        context 'ユーザーBがログインしている時' do
+            before do
+                user_b= FactoryBot.create(:user, name: 'ユーザーB',email: 'b@example.com', password: 'password')
+                visit login_path
+                fill_in 'メールアドレス', with: 'b@example.com'
+                fill_in 'パスワード', with: 'password'
+                click_button 'ログインする'
+            end
+
+            it 'ユーザーAで作成したミルク記録が表示されない' do
+                expect(page).to have_no_content 'テスト' 
+            end
+        end
     end
 end

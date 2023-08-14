@@ -19,7 +19,7 @@ table.table.table-hover
       td = @milk.time
     tr 
       th = Milk.human_attribute_name(:memo)
-      td = simple_format(h(@milk.memo), {}, sanitize: false, wrapper_tag: "div")
+      td = auto_link(simple_format(h(@milk.memo), {}, sanitize: false, wrapper_tag: "div"))
     tr 
       th = Milk.human_attribute_name(:created_at)
       td = @milk.created_at

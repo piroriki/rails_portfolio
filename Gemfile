@@ -46,6 +46,9 @@ gem "slim-rails"
 gem "html2slim"
 gem "bootstrap"
 gem "bcrypt", "~>3.1.7"
+gem 'rails_autolink'
+gem 'rspec-rails', '~> 3.7'
+gem 'factory_bot_rails', '~> 4.11'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

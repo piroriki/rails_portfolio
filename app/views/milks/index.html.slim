@@ -23,4 +23,4 @@ table.table.table-hover
         td = milk.created_at
         td
           = link_to '編集', edit_milk_path(milk), class:'btn btn-primary mr-3'
-          = link_to '削除', milk_path(milk), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+          = link_to '削除', milk_path(milk), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

@@ -18,9 +18,9 @@ table.table.table-hover
       tr 
         td = link_to milk.kinds, milk_path(milk) 
         td = milk.amount 
-        td = milk.time 
+        td = l milk.time 
         td = milk.memo 
-        td = milk.created_at
+        td = l milk.created_at
         td
           = link_to '編集', edit_milk_path(milk), class:'btn btn-primary mr-3'
           = link_to '削除', milk_path(milk), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

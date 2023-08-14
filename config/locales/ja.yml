@@ -1,4 +1,7 @@
 ja:
+  time:
+    formats:
+      default: "%m月%d日 %H:%M"
   activerecord:
     errors:
       message:

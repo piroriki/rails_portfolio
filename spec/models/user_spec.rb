@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'userモデル機能', type: :model do
+RSpec.describe 'userモデルバリデーション', type: :model do
+    
     it '名前、メールアドレス、パスワードが揃った場合、有効になる' do
         user = FactoryBot.build(:user)
         expect(user).to be_valid

@@ -48,6 +48,7 @@ gem "bootstrap"
 gem "bcrypt", "~>3.1.7"
 gem "rails_autolink"
 gem "rails-i18n"
+#gem "validates_email_format_of"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

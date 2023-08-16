@@ -31,13 +31,13 @@ class MilksController < ApplicationController
     if @milk.update(milk_params)
       redirect_to milks_path, notice: "更新完了しました"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-      @milk.destroy
-      redirect_to milks_path, notice: '削除完了しました'
+    @milk.destroy
+    redirect_to milks_path, notice: '削除完了しました'
   end
 
   private

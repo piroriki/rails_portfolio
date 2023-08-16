@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :new, :destroy]
+  
+  before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
     @meals = Meal.all
@@ -15,7 +16,7 @@ class MealsController < ApplicationController
     if @meal.update(meal_params)
       redirect_to meals_path, notice: '更新完了しました'
     else
-      render: edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -25,11 +26,13 @@ class MealsController < ApplicationController
 
   def create
     @meal = current_user.meals.new(meal_params)
+
     if @meal.save
       redirect_to meals_path, notice: '登録完了しました'
     else
-      render: new
+      render :new, status: :unprocessable_entity
     end
+
   end
 
   def destroy

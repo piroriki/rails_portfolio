@@ -6,11 +6,12 @@ RSpec.describe 'ミルク管理機能', type: :system do
     let!(:milk_a) { FactoryBot.create(:milk, kinds:'breast_milk', amount: '130', time: '17:17', memo: '詳細表示確認') }
 
         before do
-            FactoryBot.create(:milk, kinds: 'milk', amount: '150', time: '5:15', memo: 'テスト', user: user_a)
+            FactoryBot.create(:milk, kinds: 'milk', amount: '150', time: '05:15', memo: 'テスト', user: user_a)
             visit login_path
             fill_in 'メールアドレス', with: login_user.email
             fill_in 'パスワード', with: login_user.password
             click_button 'ログインする'
+            visit milks_path
         end
 
         shared_examples_for 'ユーザーAが登録したミルク記録が表示される' do
@@ -21,11 +22,15 @@ RSpec.describe 'ミルク管理機能', type: :system do
         context 'ユーザーAがログインしている時' do
             let(:login_user) { user_a }
             
-            it_behaves_like 'ユーザーAが登録したミルク記録が表示される'
+            it 'ユーザーAが登録したミルク記録が表示される' do
+                expect(page).to have_content 'テスト'
+            end
+            #it_behaves_like 'ユーザーAが登録したミルク記録が表示される'
         end
         
         context 'ユーザーBがログインしている時' do
             let(:login_user) { user_b }
+            
             it 'ユーザーAが登録したミルク記録が表示されない' do
                 expect(page).to have_no_content 'テスト' 
             end

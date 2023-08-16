@@ -1,4 +1,21 @@
 ja:
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する
+      submit: 保存する
+  simple_format:
+    required: 
+      html: <div class='required'>必須</div>
+    hints:
+      user:
+        email: サインインするメールアドレスを入力してください
+        password: 半角英数字のみで入力してください
+      placehodlders:
+        user:
+          email: メールアドレス
+          password: パスワード
+
   time:
     formats:
       default: "%m月%d日 %H:%M"
@@ -9,9 +26,17 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "#{record}が存在しているので削除できません"
+
     models:
       milk: ミルク
+      meal: 食事
+      user: ユーザー
+
     attributes:
+      user:
+      email: メールアドレス
+      password: パスワード
+        
       milk:
         id: ID
         kinds: 種類
@@ -20,3 +45,13 @@ ja:
         memo: メモ
         created_at: 登録日時
         updated_at: 更新日時
+
+      meal:
+        id: ID
+        kinds: 種類
+        amount: 量
+        time: 時間
+        memo: メモ
+        created_at: 登録日時
+        updated_at: 更新日時
+    

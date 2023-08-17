@@ -32,4 +32,16 @@ RSpec.describe 'userモデルバリデーション', type: :model do
         expect(user2.errors[:email]).to include('はすでに存在します')
     end
 
+    it 'nameは50文字以内でなければ、無効になる' do
+        user = FactoryBot.build(:user, name: 'a' * 51)
+        user.valid?
+        expect(user.errors[:name]).to include('は50文字以内で入力してください')
+    end
+
+    it 'emailは100文字以内でなければ、無効になる' do
+        user = FactoryBot.build(:user, email: "#{'a' * 101 }@example.com")
+        user.valid?
+        expect(user.errors[:email]).to include('は100文字以内で入力してください')
+    end
+
 end

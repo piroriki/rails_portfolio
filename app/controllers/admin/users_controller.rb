@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  protect_from_forgery with: :exception, only: :create
+
   def new
     @user = User.new
   end

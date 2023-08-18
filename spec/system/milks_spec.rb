@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'ミルク管理機能', type: :system do
-    let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', password: 'password') }
-    let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com', password: 'password') }
+    let(:user_a) { FactoryBot.create(:user, :a) }
+    let(:user_b) { FactoryBot.create(:user, :b) }
     let!(:milk_a) { FactoryBot.create(:milk, kinds:'breast_milk', amount: '130', time: '17:17', memo: '詳細表示確認') }
 
         before do

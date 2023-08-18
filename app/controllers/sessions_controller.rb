@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to milks_path, notice: 'ログインしました'
+      redirect_to root_path, notice: 'ログインしました'
     else
       render :new, status: :unprocessable_entity
     end

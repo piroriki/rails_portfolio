@@ -1,4 +1,4 @@
-module LoginSupport
+module LoginModule
     def login(user)
         visit login_path
         fill_in 'メールアドレス', with: user.email

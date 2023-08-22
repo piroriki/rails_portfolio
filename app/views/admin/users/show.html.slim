@@ -19,10 +19,10 @@ table.table.table-hover
       td = @user.admin? ? 'あり' : 'なし'
     tr 
       th = User.human_attribute_name(:created_at)
-      td = @user.create_at
+      td = l @user.created_at
     tr 
       th = User.human_attribute_name(:updated_at)
-      td = @user.updated_at
+      td = l @user.updated_at
 
-= link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'
-= link_to '削除', admin_user_path(user),method: :delete, data: { turbo-method: :delete, turbo-confirm: 'ユーザー#{@user.name}を本当に削除してもよろしいですか？'}, class: 'btn btan-danger'
+= link_to '編集', edit_admin_user_path(@user), class: 'btn btn-primary mr-3'
+= link_to '削除', admin_user_path(@user), data: { turbo_method: :delete, turbo_confirm: 'ユーザー「#{@user.name}」を本当に削除してもよろしいですか？' }, class: 'btn btn-danger'

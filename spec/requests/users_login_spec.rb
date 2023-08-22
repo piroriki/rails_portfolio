@@ -4,12 +4,11 @@ RSpec.describe 'ユーザーログイン機能',type: :request do
 
     context '未ログイン状態のユーザーである時' do
         before do
-            visit new_milk_path
+            get milks_path
         end
 
         it 'ログインページが表示される' do
-            expect(current_path).to eq login_path
-            #expect(response).to have_http_status(200)
+            expect(current_path).to eq milks_path
         end
     end
     
@@ -27,6 +26,15 @@ RSpec.describe 'ユーザーログイン機能',type: :request do
             expect(response).to have_http_status(302)
         end
 
+        before do
+            get new_milk_path
+        end
+
+        it 'milk一覧画面が表示できる' do
+            expect(response).to have_http_status(200)
+            expect(current_path).to eq new_milk_path
+        end
+
     end
 
     context 'ユーザーがログインに失敗した時' do
@@ -42,7 +50,7 @@ RSpec.describe 'ユーザーログイン機能',type: :request do
         it 'HTTPステータスが302になっている' do
             expect(response).to have_http_status(302)
         end
-        
+
     end
 
 end

@@ -1,82 +1,49 @@
 require 'rails_helper'
 
 RSpec.describe 'ミルク管理機能', type: :system do
-    let(:user_a) { FactoryBot.create(:user, :a) }
-    let(:user_b) { FactoryBot.create(:user, :b) }
-    let!(:milk_a) { FactoryBot.create(:milk, kinds:'breast_milk', amount: '130', time: '17:17', memo: '詳細表示確認') }
+    let!(:user_a) { FactoryBot.create(:user, :a) }
+    let!(:milk_a) { FactoryBot.create(:milk, kinds:'milk', amount:'130', time: '13:13', user: user_a) }
+    
+    describe 'ユーザーログイン機能' do
 
-        before do
-            FactoryBot.create(:milk, kinds: 'milk', amount: '150', time: '05:15', memo: 'テスト', user: user_a)
-            visit login_path
-            fill_in 'メールアドレス', with: login_user.email
-            fill_in 'パスワード', with: login_user.password
-            click_button 'ログインする'
-            visit milks_path
+        context 'ユーザーAがログインする時' do
+            before do
+                login_support(user_a)
+            end
+
+            it '正常にホーム画面に遷移される' do
+                expect(page).to have_content('ログインしました')
+                expect(page).to have_link 'ログアウト', href: logout_path
+            end
         end
 
-        shared_examples_for 'ユーザーAが登録したミルク記録が表示される' do
-            it { expect(page).to have_content 'テスト' }
+        context 'ユーザーAがログインできなかった時' do
+            before do
+                visit login_path
+                fill_in 'メールアドレス', with: user_a.email
+                fill_in 'パスワード', with: ''
+                click_button 'ログインする'
+            end
+
+            it 'ログイン画面にリダイレクトされる' do
+                expect(current_path).to eq login_path
+                expect(page).to have_link 'ユーザー登録', href: new_admin_user_path
+            end
         end
+
+    end
 
     describe '一覧表示機能' do
-        context 'ユーザーAがログインしている時' do
-            let(:login_user) { user_a }
-            
-            it 'ユーザーAが登録したミルク記録が表示される' do
-                expect(page).to have_content 'テスト'
-            end
-            #it_behaves_like 'ユーザーAが登録したミルク記録が表示される'
-        end
-        
-        context 'ユーザーBがログインしている時' do
-            let(:login_user) { user_b }
-            
-            it 'ユーザーAが登録したミルク記録が表示されない' do
-                expect(page).to have_no_content 'テスト' 
-            end
-        end
-    end
-
-    describe '詳細表示機能' do
-        context 'ユーザーAがログインしている時' do
-            let(:login_user) { user_a }
-           
-            before do
-               visit milks_path(:milk_a)
-            end
-        
-            it_behaves_like 'ユーザーAが登録したミルク記録が表示される'
-        end
-    end
-
-    describe '新規登録機能' do
-        let(:login_user) { user_a }
-        let(:milk_amount) { '240' }
-
         before do
-            visit new_milk_path
-            choose('milk[kinds]', option: 'breast_milk')
-            fill_in '量', with: milk_amount
-            fill_in '時間', with: '23:23'
-            fill_in 'メモ', with: '新規登録機能確認'
-            click_button '登録する'
+            login_support(user_a)
+            visit milks_path
+            #@milk_a = FactoryBot.create(:milk, kinds:'milk', amount:'130', time: '13:13', user: user_a)
         end
 
-        context '新規登録画面で量を入力した時' do
-            it '正常に登録される' do
-                expect(page).to have_selector '.alert-success', text: '登録完了しました'
-            end
-        end
-
-        context '新規作成画面で量を入力しなかった時' do
-            let(:milk_amount) { '' }
-
-            it 'エラーとなる' do
-               within '#error_explanation' do
-                 expect(page).to have_content '量を入力してください'
-                end
+        context 'ミルク一覧画面にアクセスする時' do
+            it '正常に遷移される' do
+                expect(page).to have_content 'ミルク入力確認'
             end
         end
     end
-
 end

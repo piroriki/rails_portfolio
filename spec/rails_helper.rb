@@ -35,7 +35,8 @@ end
 
 RSpec.configure do |config|
   # config.include FactoryBot::Syntax::Methods #FactoryBotの記述省略
-  config.include LoginSupport #module読み込み
+  config.include LoginModule #module読み込み
+  config.include SignupModule
 
   #Webdrivers::Chromedriver.required_version = '115.0.5790'
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

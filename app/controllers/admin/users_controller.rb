@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+
+  skip_before_action :login_required, only: [:new, :create, :edit, :update, :show]
   protect_from_forgery with: :exception, only: :create
 
   def new
@@ -11,7 +13,7 @@ class Admin::UsersController < ApplicationController
     if @user.save
       redirect_to root_path(@user), notice: "ユーザー「#{@user.name}」を登録しました"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,10 +28,10 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update
-      redirect_to root_path, notice: "ユーザー「#{@user.name}」を更新しました"
+    if @user.update(user_params)
+      redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を更新しました"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -41,7 +43,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.destroy
-    redirect_to root_path, notice: "ユーザー「#{@user.name}」を削除しました"
+    redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を削除しました"
   end
 
 

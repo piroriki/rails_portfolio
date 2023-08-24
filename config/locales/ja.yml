@@ -42,6 +42,8 @@ ja:
       milk:
         id: ID
         kinds: 種類
+        milk: ミルク
+        breast_milk: 母乳
         amount: 量
         time: 時間
         memo: メモ

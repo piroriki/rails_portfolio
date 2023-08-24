@@ -16,7 +16,7 @@ RSpec.describe 'mealモデルバリデーション' do
 
     it '量がない場合、無効になる' do
         meal = FactoryBot.build(:meal, amount: nil)
-        mead.valid?
+        meal.valid?
         expect(meal.errors[:amount]).to include('を入力してください')
     end
 
@@ -24,6 +24,12 @@ RSpec.describe 'mealモデルバリデーション' do
         meal = FactoryBot.build(:meal, time: nil)
         meal.valid?
         expect(meal.errors[:time]).to include('を入力してください')
+    end
+
+    it 'メモが100文字以上になる場合、無効になる' do
+        meal = FactoryBot.build(:meal, memo: 'a' * 105)
+        meal.valid?
+        expect(meal.errors[:memo]).to include('は100文字以内で入力してください')
     end
 
 end

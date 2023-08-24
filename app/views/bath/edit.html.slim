@@ -1,2 +1,6 @@
-h1 Bath#edit
-p Find me in app/views/bath/edit.html.slim
+h1 お風呂の編集
+
+.nav.justify-content-end 
+  = link_to 'お風呂一覧', baths_path, class: 'nav-link'
+
+= render partial: 'form', locals: { bath: @bath }

@@ -1,2 +1,26 @@
-h1 Bath#show
-p Find me in app/views/bath/show.html.slim
+h1 お風呂の詳細内容
+
+nav.justify-content-end 
+  = link_to 'お風呂一覧', baths_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Bath.human_attribute_name(:id)
+      td = @bath.id
+    tr 
+      th = Bath.human_attribute_name(:time)
+      td = l @bath.time
+    tr 
+      th = Bath.human_attribute_name(:memo)
+      td = auto_link(simple_format(h(@bath.memo), {}, sanitize: false, wrapper_tag: "div"))
+    tr 
+      th = Bath.human_attribute_name(:created_at)
+      td = l @bath.created_at
+    tr 
+      th = Bath.human_attribute_name(:updated_at)
+      td = l @bath.updated_at
+
+= link_to '編集', edit_bath_path, class: 'btn btn-primary mr-3'
+= link_to '削除', bath_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+

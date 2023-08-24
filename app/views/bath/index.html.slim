@@ -1,2 +1,22 @@
-h1 Bath#index
-p Find me in app/views/bath/index.html.slim
+h1 お風呂の記録一覧
+
+= link_to '新規登録', new_bath_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Bath.human_attribute_name(:time)
+      th = Bath.human_attribute_name(:memo)
+      th = Bath.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @baths.each do |bath|
+      tr 
+        td = l bath.time 
+        td = bath.memo 
+        td = l bath.created_at
+        td
+          = link_to '編集', edit_bath_path(bath), class:'btn btn-primary mr-3'
+          = link_to '削除', bath_path(bath), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

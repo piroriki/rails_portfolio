@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  root to: 'tops#index'
+  root to: 'tops#index' # トップページのみ別コントローラで作成
 
   resources :milks, :meals, :baths
   

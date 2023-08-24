@@ -1,4 +1,4 @@
-class BathController < ApplicationController
+class BathsController < ApplicationController
 
   before_action :set_, only: [:show, :edit, :update, :destroy]
 
@@ -12,12 +12,12 @@ class BathController < ApplicationController
     if @bath.update
       redirect_to baths_path, notice: '更新完了しました'
     else
-      render: edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def index
-    @bath = Baths.all
+    @baths = Bath.all
   end
 
   def new
@@ -30,7 +30,7 @@ class BathController < ApplicationController
     if @bath.save
       redirect_to root_path, notice: '登録完了しました'
     else
-      render: new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
 
   end
@@ -40,7 +40,7 @@ class BathController < ApplicationController
     redirect_to baths_path, notice: '削除完了しました'
   end
 
-  privete
+  private
 
   def baths_params
     params.require(:bath).permit(:time, :memo).merge(user_id: current_user.id)

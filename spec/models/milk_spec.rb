@@ -25,5 +25,11 @@ RSpec.describe Milk, type: :model do
         milk.valid?
         expect(milk.errors[:time]).to include('を入力してください')
     end
+
+    it 'メモが100文字以上になる場合、無効になる' do
+        milk = FactoryBot.build(:milk, memo: 'a' * 105)
+        milk.valid?
+        expect(milk.errors[:memo]).to include('は100文字以内で入力してください')
+    end
     
 end

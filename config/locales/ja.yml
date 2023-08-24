@@ -31,6 +31,7 @@ ja:
       milk: ミルク
       meal: 食事
       user: ユーザー
+      bath: お風呂
 
     attributes:
       user:
@@ -54,6 +55,13 @@ ja:
         id: ID
         kinds: 種類
         amount: 量
+        time: 時間
+        memo: メモ
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      bath:
+        id: ID
         time: 時間
         memo: メモ
         created_at: 登録日時

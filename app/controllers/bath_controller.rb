@@ -1,4 +1,7 @@
 class BathController < ApplicationController
+
+  before_action :set_, only: [:show, :edit, :update, :destroy]
+
   def show
   end
 
@@ -6,8 +9,6 @@ class BathController < ApplicationController
   end
 
   def update
-    @bath = Bath.update
-    
     if @bath.update
       redirect_to baths_path, notice: '更新完了しました'
     else
@@ -24,7 +25,7 @@ class BathController < ApplicationController
   end
 
   def create
-    @bath = Bath.new
+    @bath = current_user.baths.new(bath_params)
 
     if @bath.save
       redirect_to root_path, notice: '登録完了しました'
@@ -42,11 +43,11 @@ class BathController < ApplicationController
   privete
 
   def baths_params
-    params.require(:milk).permit(:time, :memo).merge(user_id: current_user.id)
+    params.require(:bath).permit(:time, :memo).merge(user_id: current_user.id)
   end
 
   def set_bath
-    @milk = current_user.milks.find(params[:id])
+    @bath = current_user.baths.find(params[:id])
   end
 
 end

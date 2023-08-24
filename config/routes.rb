@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'bath/show'
-  get 'bath/edit'
-  get 'bath/index'
-  get 'bath/new'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -14,7 +10,7 @@ Rails.application.routes.draw do
 
   root to: 'tops#index'
 
-  resources :milks, :meals
+  resources :milks, :meals, :baths
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

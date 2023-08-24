@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'bath/show'
+  get 'bath/edit'
+  get 'bath/index'
+  get 'bath/new'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

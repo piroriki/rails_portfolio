@@ -33,6 +33,7 @@ ja:
       user: ユーザー
       bath: お風呂
       medicine: お薬
+      execretion: うんちおしっこ
 
     attributes:
       user:
@@ -70,6 +71,14 @@ ja:
 
       medicine:
         id: ID
+        time: 時間
+        memo: メモ
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      execretion:
+        id: ID
+        kinds: 種類
         time: 時間
         memo: メモ
         created_at: 登録日時

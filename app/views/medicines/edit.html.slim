@@ -1,2 +1,6 @@
-h1 Medicines#edit
-p Find me in app/views/medicines/edit.html.slim
+h1 お薬の編集
+
+.nav.justify-content-end 
+  = link_to 'お薬一覧', medicines_path, class: 'nav-link'
+
+= render partial: 'form', locals: { medicine: @medicine }

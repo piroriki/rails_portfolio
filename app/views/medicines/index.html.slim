@@ -1,2 +1,22 @@
-h1 Medicines#index
-p Find me in app/views/medicines/index.html.slim
+h1 お薬の記録一覧
+
+= link_to '新規登録', new_medicine_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Medicine.human_attribute_name(:time)
+      th = Medicine.human_attribute_name(:memo)
+      th = Medicine.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @medicines.each do |medicine|
+      tr 
+        td = l medicine.time 
+        td = medicine.memo 
+        td = l medicine.created_at
+        td
+          = link_to '編集', edit_medicine_path(medicine), class:'btn btn-primary mr-3'
+          = link_to '削除', medicine_path(medicine), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

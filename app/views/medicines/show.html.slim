@@ -1,2 +1,25 @@
-h1 Medicines#show
-p Find me in app/views/medicines/show.html.slim
+h1 お薬の詳細内容
+
+nav.justify-content-end 
+  = link_to 'お薬一覧', medicines_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Medicine.human_attribute_name(:id)
+      td = @medicine.id
+    tr 
+      th = Medicine.human_attribute_name(:time)
+      td = l @medicine.time
+    tr 
+      th = Medicine.human_attribute_name(:memo)
+      td = auto_link(simple_format(h(@medicine.memo), {}, sanitize: false, wrapper_tag: "div"))
+    tr 
+      th = Medicine.human_attribute_name(:created_at)
+      td = l @medicine.created_at
+    tr 
+      th = Medicine.human_attribute_name(:updated_at)
+      td = l @medicine.updated_at
+
+= link_to '編集', edit_medicine_path, class: 'btn btn-primary mr-3'
+= link_to '削除', medicine_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

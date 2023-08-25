@@ -1,2 +1,24 @@
-h1 Execretions#index
-p Find me in app/views/execretions/index.html.slim
+h1 うんちおしっこの記録一覧
+
+= link_to '新規登録', new_execretion_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Execretion.human_attribute_name(:kinds)
+      th = Execretion.human_attribute_name(:time)
+      th = Execretion.human_attribute_name(:memo)
+      th = Execretion.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @execretions.each do |execretion|
+      tr 
+        td = link_to execretion.kinds, execretion_path(execretion) 
+        td = l execretion.time 
+        td = execretion.memo 
+        td = l execretion.created_at
+        td
+          = link_to '編集', edit_execretion_path(execretion), class:'btn btn-primary mr-3'
+          = link_to '削除', execretion_path(execretion), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

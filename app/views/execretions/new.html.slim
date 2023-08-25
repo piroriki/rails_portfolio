@@ -1,2 +1,6 @@
-h1 Execretions#new
-p Find me in app/views/execretions/new.html.slim
+h1 うんちおしっこの新規登録
+
+.nav.justify-content-end 
+  = link_to '一覧', execretions_path, class: 'nav-link'
+
+= render partial: 'form', locals: { execretion: @execretion }

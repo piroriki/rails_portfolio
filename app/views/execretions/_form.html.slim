@@ -1,0 +1,26 @@
+- if execretion.errors.present?
+  ul#error_explanation 
+    - execretion.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: execretion, local: true do |f|
+
+    .form-group 
+      = f.radio_button :kinds, :poop
+      = f.label :poop, 'うんち', { value: :poop, style: 'display: inline-block;'}
+
+      = f.radio_button :kinds, :pee
+      = f.label :pee, 'おしっこ', { value: :pee, style: 'display: inline-block;'}
+
+      = f.radio_button :kinds, :both
+      = f.label :both, '両方', { value: :both, style: 'display: inline-block;'}
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'execretion_time'
+
+    .form-group 
+      = f.label :memo
+      = f.text_area :memo, class:'form-group', id: 'execretion_memo'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

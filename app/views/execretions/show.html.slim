@@ -1,2 +1,29 @@
-h1 Execretions#show
-p Find me in app/views/execretions/show.html.slim
+h1 うんちおしっこの詳細内容
+
+nav.justify-content-end 
+  = link_to 'うんちおしっこ一覧', execretions_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Execretion.human_attribute_name(:id)
+      td = @execretion.id
+    tr 
+      th = Execretion.human_attribute_name(:kinds)
+      td = @execretion.kinds
+    tr 
+      th = Execretion.human_attribute_name(:time)
+      td = l @execretion.time
+    tr 
+      th = Execretion.human_attribute_name(:memo)
+      td = auto_link(simple_format(h(@execretion.memo), {}, sanitize: false, wrapper_tag: "div"))
+    tr 
+      th = Execretion.human_attribute_name(:created_at)
+      td = l @execretion.created_at
+    tr 
+      th = Execretion.human_attribute_name(:updated_at)
+      td = l @execretion.updated_at
+
+= link_to '編集', edit_execretion_path, class: 'btn btn-primary mr-3'
+= link_to '削除', execretion_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+

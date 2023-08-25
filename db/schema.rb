@@ -49,7 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_042802) do
   end
 
   create_table "medicines", force: :cascade do |t|
-    t.string "kinds", null: false
     t.datetime "time", null: false
     t.text "memo"
     t.integer "user_id"

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'medicines/index'
+  get 'medicines/new'
+  get 'medicines/show'
+  get 'medicines/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'

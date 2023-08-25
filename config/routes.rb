@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'execretions/index'
+  get 'execretions/new'
+  get 'execretions/show'
+  get 'execretions/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'

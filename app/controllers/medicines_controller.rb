@@ -6,18 +6,18 @@ class MedicinesController < ApplicationController
   end
 
   def index
-    @milks = Milk.all
+    @medicines = Medicine.all
   end
 
   def new
-    @milk = Milk.new
+    @medicine = Medicine.new
   end
 
   def create
-    @milk = current_user.milks.new(milk_params)
+    @medicine = current_user.medicines.new(medicine_params)
 
-    if @milk.save
-      redirect_to milks_path, notice: '登録完了しました'
+    if @medicine.save
+      redirect_to medicines_path, notice: '登録完了しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,26 +28,26 @@ class MedicinesController < ApplicationController
   end
 
   def update
-    if @milk.update(milk_params)
-      redirect_to milks_path, notice: "更新完了しました"
+    if @medicine.update(medicine_params)
+      redirect_to medicines_path, notice: "更新完了しました"
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @milk.destroy
-    redirect_to milks_path, notice: '削除完了しました'
+    @medicine.destroy
+    redirect_to medicines_path, notice: '削除完了しました'
   end
 
   private
 
-  def milk_params
-    params.require(:milk).permit(:kinds, :amount, :time, :memo).merge(user_id: current_user.id)
+  def medicine_params
+    params.require(:medicine).permit(:time, :memo).merge(user_id: current_user.id)
   end
 
-  def set_milk
-    @milk = current_user.milks.find(params[:id])
+  def set_medicine
+    @medicine = current_user.medicines.find(params[:id])
   end
   
-  ed
+end

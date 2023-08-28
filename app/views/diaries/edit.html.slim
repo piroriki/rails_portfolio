@@ -1,2 +1,6 @@
-h1 Diaries#edit
-p Find me in app/views/diaries/edit.html.slim
+h1 日記の編集
+
+.nav.justify-content-end 
+  = link_to '日記一覧', diaries_path, class: 'nav-link'
+
+= render partial: 'form', locals: { diary: @diary }

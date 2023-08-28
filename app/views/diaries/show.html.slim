@@ -1,2 +1,26 @@
-h1 Diaries#show
-p Find me in app/views/diaries/show.html.slim
+h1 日記の詳細内容
+
+nav.justify-content-end 
+  = link_to '日記一覧', diaries_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Diary.human_attribute_name(:id)
+      td = @diary.id
+    tr 
+      th = Diary.human_attribute_name(:title)
+      td = @diary.title
+    tr 
+      th = Diary.human_attribute_name(:content)
+      td = @diary.auto_link(simple_format(h(@diary.content), {}, sanitize: false, wrapper_tag: "div"))
+    tr
+      th = Diary.human_attribute_name(:created_at)
+      td = l @diary.created_at
+    tr 
+      th = Diary.human_attribute_name(:updated_at)
+      td = l @diary.updated_at
+
+= link_to '編集', edit_diary_path, class: 'btn btn-primary mr-3'
+= link_to '削除', diary_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+

@@ -1,0 +1,16 @@
+- if diary.errors.present?
+  ul#error_explanation 
+    - diary.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: diary, local: true do |f|
+
+    .form-group 
+      = f.label :title
+      = f.text_area :title, class: 'form-control', id: 'diary_title'
+
+    .form-group 
+      = f.label :content
+      = f.text_area :content, class:'form-control', id: 'diary_content'
+
+    = f.submit '登録する', class: 'btn btn-primary'

@@ -1,2 +1,6 @@
-h1 Diaries#new
-p Find me in app/views/diaries/new.html.slim
+h1 日記の新規登録
+
+.nav.justify-content-end 
+  = link_to '日記一覧', milks_path, class: 'nav-link'
+
+= render partial: 'form', locals: { diary: @diary }

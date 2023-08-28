@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'symptoms/index'
-  get 'symptoms/new'
-  get 'symptoms/show'
-  get 'symptoms/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'
@@ -15,7 +11,7 @@ Rails.application.routes.draw do
 
   root to: 'tops#index' # トップページのみ別コントローラで作成
 
-  resources :milks, :meals, :baths, :medicines, :execretions
+  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

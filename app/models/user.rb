@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
 
+    # 各モデルとの関連づけ
     has_many :milks, dependent: :destroy
     has_many :meals, dependent: :destroy
     has_many :baths, dependent: :destroy

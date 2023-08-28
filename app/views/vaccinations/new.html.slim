@@ -1,2 +1,6 @@
-h1 Vaccinations#new
-p Find me in app/views/vaccinations/new.html.slim
+h1 予防接種の新規登録
+
+.nav.justify-content-end 
+  = link_to '一覧', vaccinations_path, class: 'nav-link'
+
+= render partial: 'form', locals: { vaccination: @vaccination }

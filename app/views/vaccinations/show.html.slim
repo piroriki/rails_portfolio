@@ -1,2 +1,28 @@
-h1 Vaccinations#show
-p Find me in app/views/vaccinations/show.html.slim
+h1 予防接種の詳細内容
+
+nav.justify-content-end 
+  = link_to '予防接種一覧', vaccinations_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Vaccination.human_attribute_name(:id)
+      td = @vaccination.id
+    tr 
+      th = Vaccination.human_attribute_name(:kinds)
+      td = @vaccination.kinds
+    tr 
+      th = Vaccination.human_attribute_name(:time)
+      td = l @vaccination.time
+    tr 
+      th = Vaccination.human_attribute_name(:memo)
+      td = auto_link(simple_format(h(@vaccination.memo), {}, sanitize: false, wrapper_tag: "div"))
+    tr 
+      th = Vaccination.human_attribute_name(:created_at)
+      td = l @vaccination.created_at
+    tr 
+      th = Vaccination.human_attribute_name(:updated_at)
+      td = l @vaccination.updated_at
+
+= link_to '編集', edit_vaccination_path, class: 'btn btn-primary mr-3'
+= link_to '削除', vaccination_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

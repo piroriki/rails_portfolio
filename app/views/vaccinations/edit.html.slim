@@ -1,2 +1,6 @@
-h1 Vaccinations#edit
-p Find me in app/views/vaccinations/edit.html.slim
+h1 予防接種の編集
+
+.nav.justify-content-end 
+  = link_to '予防接種一覧', vaccinations_path, class: 'nav-link'
+
+= render partial: 'form', locals: { vaccination: @vaccination }

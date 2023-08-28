@@ -1,2 +1,24 @@
-h1 Vaccinations#index
-p Find me in app/views/vaccinations/index.html.slim
+h1 予防接種の記録一覧
+
+= link_to '新規登録', new_vaccination_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Vaccination.human_attribute_name(:kinds)
+      th = Vaccination.human_attribute_name(:time)
+      th = Vaccination.human_attribute_name(:memo)
+      th = Vaccination.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @vaccinations.each do |vaccination|
+      tr 
+        td = link_to vaccination.kinds, vaccination_path(vaccination) 
+        td = l vaccination.time 
+        td = vaccination.memo 
+        td = l vaccination.created_at
+        td
+          = link_to '編集', edit_vaccination_path(vaccination), class:'btn btn-primary mr-3'
+          = link_to '削除', vaccination_path(vaccination), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

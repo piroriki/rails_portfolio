@@ -1,0 +1,19 @@
+- if vaccination.errors.present?
+  ul#error_explanation 
+    - vaccination.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: vaccination, local: true do |f|
+
+    .form-group 
+      = f.select :kinds, [['B型肝炎',1]['ロタウイルス1価',2],['ロタウイルス5価',3],['ヒブ',4],['肺炎球菌',5],['4種混合',6],['BCG',7],['MR(風疹・麻疹)',8],['水ぼうそう',9],['おたふく風邪',10],['インフルエンザ',11],['新型コロナ',12]], {include_blank: true, selected: 1 }, { id: 'vaccination_kinds' }
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'vaccination_time'
+
+    .form-group 
+      = f.label :memo
+      = f.text_area :memo, class:'form-group', id: 'vaccination_memo'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

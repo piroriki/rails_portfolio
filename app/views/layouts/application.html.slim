@@ -11,7 +11,7 @@ html
 
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light 
-      .navbar-brand Coyell 
+      .navbar-brand = link_to 'Coyell', root_path
 
       ul.navbar-nav.ml-auto 
         - if current_user 

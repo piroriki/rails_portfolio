@@ -14,7 +14,7 @@ table.table.table-hover
   tbody 
     - @diaries.each do |diary|
       tr 
-        td = link_to milk.title, title_path(diary) 
+        td = link_to diary.title, diary_path(diary) 
         td = diary.content 
         td = l diary.created_at
         td

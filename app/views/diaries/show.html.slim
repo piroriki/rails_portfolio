@@ -13,7 +13,7 @@ table.table.table-hover
       td = @diary.title
     tr 
       th = Diary.human_attribute_name(:content)
-      td = @diary.auto_link(simple_format(h(@diary.content), {}, sanitize: false, wrapper_tag: "div"))
+      td = auto_link(simple_format(h(@diary.content), {}, sanitize: false, wrapper_tag: "div"))
     tr
       th = Diary.human_attribute_name(:created_at)
       td = l @diary.created_at

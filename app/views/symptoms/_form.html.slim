@@ -6,7 +6,7 @@
 = form_with model: symptom, local: true do |f|
 
     .form-group 
-      = f.select :kinds, [['鼻水',1],['咳',2],['発熱',3],['発疹',4],['けが',5],['吐く',6]], {include_blank: true, selected: 1 }, { id: 'symptom_kinds' }
+      = f.select :kinds, [['鼻水',1],['咳',2],['発熱',3],['発疹',4],['けが',5],['吐く',6],['その他',7]], {include_blank: true, selected: 1 }, { id: 'symptom_kinds' }
 
     .form-group 
       = f.label :time

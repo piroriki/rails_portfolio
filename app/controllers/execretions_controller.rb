@@ -5,11 +5,11 @@ class ExecretionsController < ApplicationController
   end
 
   def index
-    @execretions = Excretion.all
+    @execretions = Execretion.all
   end
 
   def new
-    @execretion = Excretion.new
+    @execretion = Execretion.new
   end
 
   def create

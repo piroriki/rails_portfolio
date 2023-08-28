@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_042802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "excretions", force: :cascade do |t|
+  create_table "execretions", force: :cascade do |t|
     t.string "kinds", null: false
     t.datetime "time", null: false
     t.text "memo"

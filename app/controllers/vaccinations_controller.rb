@@ -51,6 +51,3 @@ class VaccinationsController < ApplicationController
   end
   
 end
-
-
-end

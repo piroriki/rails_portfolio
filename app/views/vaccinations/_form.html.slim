@@ -6,7 +6,7 @@
 = form_with model: vaccination, local: true do |f|
 
     .form-group 
-      = f.select :kinds, [['B型肝炎',1]['ロタウイルス1価',2],['ロタウイルス5価',3],['ヒブ',4],['肺炎球菌',5],['4種混合',6],['BCG',7],['MR(風疹・麻疹)',8],['水ぼうそう',9],['おたふく風邪',10],['インフルエンザ',11],['新型コロナ',12]], {include_blank: true, selected: 1 }, { id: 'vaccination_kinds' }
+      = f.select :kinds, [['B型肝炎',1],['ロタウイルス(分2回)',2],['ロタウイルス(分3回)',3],['ヒブ',4],['肺炎球菌',5],['4種混合',6],['BCG',7],['MR(風疹・麻疹)',8],['水ぼうそう',9],['おたふく風邪',10],['インフルエンザ',11],['新型コロナ',12]], {include_blank: true, selected: 1 }, { id: 'vaccination_kinds' }
 
     .form-group 
       = f.label :time

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'mealモデルバリデーション' do
+RSpec.describe Meal, type: :model do
 
     it '種類、量、時間が揃った場合、有効になる' do
         meal = FactoryBot.build(:meal)

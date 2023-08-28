@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Medicine do
+RSpec.describe Medicine, type: :model do
     
     describe 'medicineモデルバリデーション機能' do
         it '正しい情報が入力された時、有効になる' do

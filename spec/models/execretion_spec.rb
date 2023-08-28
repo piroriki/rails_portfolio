@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'execretionモデルバリデーション' do
+RSpec.describe Execretion, type: :model do
     
     it '正しい情報を入力した時、有効になる' do
         execretion = FactoryBot.build(:execretion)

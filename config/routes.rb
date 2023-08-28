@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'symptoms/index'
+  get 'symptoms/new'
+  get 'symptoms/show'
+  get 'symptoms/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'

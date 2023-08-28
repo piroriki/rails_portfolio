@@ -1,2 +1,6 @@
-h1 Symptoms#new
-p Find me in app/views/symptoms/new.html.slim
+h1 症状の新規登録
+
+.nav.justify-content-end 
+  = link_to '一覧', symptoms_path, class: 'nav-link'
+
+= render partial: 'form', locals: { symptom: @symptom }

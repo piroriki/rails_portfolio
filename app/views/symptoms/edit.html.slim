@@ -1,2 +1,6 @@
-h1 Symptoms#edit
-p Find me in app/views/symptoms/edit.html.slim
+h1 症状の編集
+
+.nav.justify-content-end 
+  = link_to '症状一覧', symptoms_path, class: 'nav-link'
+
+= render partial: 'form', locals: { symptom: @symptom }

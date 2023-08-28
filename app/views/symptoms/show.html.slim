@@ -1,2 +1,28 @@
-h1 Symptoms#show
-p Find me in app/views/symptoms/show.html.slim
+h1 症状の詳細内容
+
+nav.justify-content-end 
+  = link_to '症状一覧', symptoms_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Symptom.human_attribute_name(:id)
+      td = @symptom.id
+    tr 
+      th = Symptom.human_attribute_name(:kinds)
+      td = @symptom.kinds
+    tr 
+      th = Symptom.human_attribute_name(:time)
+      td = l @symptom.time
+    tr 
+      th = Symptom.human_attribute_name(:memo)
+      td = auto_link(simple_format(h(@symptom.memo), {}, sanitize: false, wrapper_tag: "div"))
+    tr 
+      th = Symptom.human_attribute_name(:created_at)
+      td = l @symptom.created_at
+    tr 
+      th = Symptom.human_attribute_name(:updated_at)
+      td = l @symptom.updated_at
+
+= link_to '編集', edit_symptom_path, class: 'btn btn-primary mr-3'
+= link_to '削除', symptom_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

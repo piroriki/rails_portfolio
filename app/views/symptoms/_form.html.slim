@@ -1,0 +1,19 @@
+- if symptom.errors.present?
+  ul#error_explanation 
+    - symptom.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: symptom, local: true do |f|
+
+    .form-group 
+      = f.select :kinds, [['鼻水',1],['咳',2],['発熱',3],['発疹',4],['けが',5],['吐く',6]], {include_blank: true, selected: 1 }, { id: 'symptom_kinds' }
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'symptom_time'
+
+    .form-group 
+      = f.label :memo
+      = f.text_area :memo, class:'form-group', id: 'symptom_memo'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

@@ -1,2 +1,24 @@
-h1 Symptoms#index
-p Find me in app/views/symptoms/index.html.slim
+h1 症状の記録一覧
+
+= link_to '新規登録', new_symptom_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Symptom.human_attribute_name(:kinds)
+      th = Symptom.human_attribute_name(:time)
+      th = Symptom.human_attribute_name(:memo)
+      th = Symptom.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @symptoms.each do |symptom|
+      tr 
+        td = link_to symptom.kinds, symptom_path(symptom) 
+        td = l symptom.time 
+        td = symptom.memo 
+        td = l symptom.created_at
+        td
+          = link_to '編集', edit_symptom_path(symptom), class:'btn btn-primary mr-3'
+          = link_to '削除', symptom_path(symptom), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

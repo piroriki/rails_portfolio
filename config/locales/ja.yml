@@ -36,6 +36,7 @@ ja:
       execretion: うんちおしっこ
       symptom: 症状
       vaccination: 予防接種
+      diary: 日記
 
     attributes:
       user:
@@ -99,6 +100,13 @@ ja:
         kinds: 種類
         time: 時間
         memo: メモ
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      diary:
+        id: ID
+        title: タイトル
+        content: 本文
         created_at: 登録日時
         updated_at: 更新日時
     

@@ -22,7 +22,8 @@ h1 ミルクの記録一覧
 table.table.table-hover
   thead.thead-default 
     tr 
-      th = Milk.human_attribute_name(:kinds)
+      //th = Milk.human_attribute_name(:kinds)
+      th = sort_link(@q, :kinds, default_order: :desc)
       th = Milk.human_attribute_name(:amount)
       th = Milk.human_attribute_name(:time)
       th = Milk.human_attribute_name(:memo)

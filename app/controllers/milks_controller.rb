@@ -6,8 +6,16 @@ class MilksController < ApplicationController
   end
 
   def index
+    @milks = Milk.all
     @q = current_user.milks.ransack(params[:q], auth_object: set_ransack_auth_object)
-    @milks = @q.result(distinct: true).recent
+
+    if @q
+      @milks = @q.result
+    else
+      @milks = Milk.all
+    end
+    
+    #@milks = @q.result(distinct: true).recent #resentスコープで表示順を変更
   end
 
   def new

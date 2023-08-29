@@ -6,7 +6,8 @@ class MilksController < ApplicationController
   end
 
   def index
-    @milks = Milk.all
+    @q = current_user.milks.ransack(params[:q], auth_object: set_ransack_auth_object)
+    @milks = @q.result(distinct: true).recent
   end
 
   def new
@@ -48,6 +49,10 @@ class MilksController < ApplicationController
 
   def set_milk
     @milk = current_user.milks.find(params[:id])
+  end
+  
+  def set_ransack_auth_object
+    current_user.admin? ? :admin : nil
   end
   
 end

@@ -42,12 +42,19 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# ビューファイルを読み書きしやすく
 gem "slim-rails"
 gem "html2slim"
+
+
 gem "bootstrap"
 gem "bcrypt", "~>3.1.7"
 gem "rails_autolink"
 gem "rails-i18n"
+
+# 検索機能を追加
+gem 'ransack'
+
 #gem "validates_email_format_of"
 
 # Use Sass to process CSS

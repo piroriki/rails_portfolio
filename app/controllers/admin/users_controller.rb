@@ -11,10 +11,14 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      # ユーザー登録完了メール送信処理を追加
+      CoyellMailer.user_creation_email(@user).deliver_now
+      
       redirect_to root_path(@user), notice: "ユーザー「#{@user.name}」を登録しました"
     else
       render :new, status: :unprocessable_entity
     end
+
   end
 
   def show

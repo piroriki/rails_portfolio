@@ -11,13 +11,11 @@ class Milk < ApplicationRecord
     validates :memo, length: { maximum: 100 }
 
     def self.ransackable_attributes(auth_object = nil)
-        #if auth_object == :admin
-        #    super
-        #else
-        #    super & %w(kinds amount time memo)
-        #end
+        %w[kinds amount time memo created_at updated_at]
+    end
 
-        ['kinds','amount','time','memo','created_at','updated_at']
+    def self.ransackable_associations(auth_object = nil)
+        []
     end
 
     #private_class_method :ransackable_attributes

@@ -295,6 +295,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  actionmailer
   bcrypt (~> 3.1.7)
   bootsnap
   bootstrap

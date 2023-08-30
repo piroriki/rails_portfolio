@@ -1,0 +1,19 @@
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+/Users/hiroseshiho/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-6icsjh sitelibdir\=./.gem.20230830-71836-6icsjh clean
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-6icsjh sitelibdir\=./.gem.20230830-71836-6icsjh
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-6icsjh sitelibdir\=./.gem.20230830-71836-6icsjh install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20230830-71836-6icsjh/debug
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-6icsjh sitelibdir\=./.gem.20230830-71836-6icsjh clean

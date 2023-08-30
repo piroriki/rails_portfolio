@@ -1,0 +1,18 @@
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+/Users/hiroseshiho/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-enz10x sitelibdir\=./.gem.20230830-71836-enz10x clean
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-enz10x sitelibdir\=./.gem.20230830-71836-enz10x
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-enz10x sitelibdir\=./.gem.20230830-71836-enz10x install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20230830-71836-enz10x
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-enz10x sitelibdir\=./.gem.20230830-71836-enz10x clean

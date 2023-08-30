@@ -1,4 +1,5 @@
 class CoyellMailer < ApplicationMailer
+
     # 送信者のメールドレスでデフォルト値を設定
     default from: 'coyell@example.com'
 
@@ -7,7 +8,8 @@ class CoyellMailer < ApplicationMailer
         mail(
             subject: 'ユーザー登録完了通知',
             to: 'user@example.com',
-            from: 'coyell@example.com'
+            from: 'coyell@example.com',
+            body: "ユーザー「#{@user.name}」の新規登録が完了しました。"
         )
     end
 end

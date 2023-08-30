@@ -1,0 +1,18 @@
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+/Users/hiroseshiho/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-dz4not sitelibdir\=./.gem.20230830-71836-dz4not clean
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-dz4not sitelibdir\=./.gem.20230830-71836-dz4not
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-dz4not sitelibdir\=./.gem.20230830-71836-dz4not install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20230830-71836-dz4not/bootsnap
+
+current directory: /Users/hiroseshiho/coyell/bendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230830-71836-dz4not sitelibdir\=./.gem.20230830-71836-dz4not clean

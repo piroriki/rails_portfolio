@@ -5,7 +5,6 @@ class CreateMilks < ActiveRecord::Migration[7.0]
       t.integer :amount, null: false
       t.datetime :time, null: false
       t.text :memo, limit: 100
-      t.integer :user_id
 
       t.timestamps
     end

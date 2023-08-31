@@ -55,6 +55,9 @@ gem "rails-i18n"
 # 検索機能を追加
 gem 'ransack'
 
+# パンくずリスト作成用
+gem 'breadcrumbs_on_rails'
+
 #gem "validates_email_format_of"
 
 # Use Sass to process CSS

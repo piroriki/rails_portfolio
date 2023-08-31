@@ -2,6 +2,12 @@ class MilksController < ApplicationController
 
   before_action :set_milk, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb 'ホーム', 'http://localhost:3000'
+  add_breadcrumb 'ミルク一覧', 'milks_path', only: [:index]
+  add_breadcrumb 'ミルク詳細', 'milk_path', only: [:show]
+  add_breadcrumb 'ミルク新規登録', 'new_milk_path', only: [:new]
+  add_breadcrumb 'ミルク更新', 'edit_milk_path', only: [:edit]
+
   def show
   end
 

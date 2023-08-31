@@ -1,5 +1,7 @@
 h1 ミルクの記録一覧
 
+= render_breadcrumbs separator: '>'
+
 //ransackで検索機能追加
 = search_form_for @q, class: 'mb-5' do |f|
   .form-group.row 

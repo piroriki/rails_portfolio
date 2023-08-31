@@ -37,23 +37,11 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
   
   # mailcatcherによる動作確認用に、SMTPメールサーバ利用設定をする
   config.action_mailer.delivery_method = :smtp
-
-  # mailgunを使用できるために追加設定する
-  ActionMailer::Base.smtp_settings = {
-    user_name: 'address@domein',
-    password: 'password',
-    domain: 'domain',
-    address: 'smtp.mailgun.org',
-    port: 587,
-    authentication: plain,
-    enable_starttls_auto: true 
-  }
-
-  #config.action_mailer.smtp_settings = { address: '127.0.0.1', port: 1025 }
+  config.action_mailer.smtp_settings = { address: '127.0.0.1', port: 1025 }
 
   # config.action_mailer.default_url_options = { host: 'localhost:3000' }
 

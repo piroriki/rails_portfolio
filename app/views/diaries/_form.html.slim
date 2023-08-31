@@ -13,4 +13,8 @@
       = f.label :content
       = f.text_area :content, class:'form-control', id: 'diary_content'
 
+    .form-group
+      = f.label :image
+      = f.file_field :image, class: 'form-control'
+
     = f.submit '登録する', class: 'btn btn-primary'

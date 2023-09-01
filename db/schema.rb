@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_31_235523) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_01_000415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_235523) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
+  create_table "diary_tag_relations", force: :cascade do |t|
+    t.bigint "diary_id", null: false
+    t.bigint "diary_tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diary_id"], name: "index_diary_tag_relations_on_diary_id"
+    t.index ["diary_tag_id"], name: "index_diary_tag_relations_on_diary_tag_id"
+  end
+
+  create_table "diary_tags", force: :cascade do |t|
+    t.string "name", limit: 50, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "execretions", force: :cascade do |t|
@@ -135,6 +150,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_235523) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "baths", "users"
   add_foreign_key "diaries", "users"
+  add_foreign_key "diary_tag_relations", "diaries"
+  add_foreign_key "diary_tag_relations", "diary_tags"
   add_foreign_key "execretions", "users"
   add_foreign_key "meals", "users"
   add_foreign_key "medicines", "users"

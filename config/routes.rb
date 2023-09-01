@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get 'search_tag', to: 'diaries#search_tag'
+
   namespace :admin do
     resources :users
   end

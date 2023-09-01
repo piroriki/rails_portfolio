@@ -1,5 +1,10 @@
 class Diary < ApplicationRecord
+
     belongs_to :user
+
+    # タグの関連付けのみ記載しておく
+    has_many :diary_tag_relations, dependent: :destroy
+    has_many :diary_tags, through: :diary_tag_relations
 
     # activestorageと紐づける
     has_one_attached :image

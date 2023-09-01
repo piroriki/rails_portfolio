@@ -15,7 +15,14 @@ class DiariesController < ApplicationController
   def create
     @diary = current_user.diaries.new(diary_params)
 
+    # 受け取った値を,で分割して配列にする
+    tag_list = params[:diary][:name].split(',')
+
     if @diary.save
+      
+      # 紐づいたタグを保存するメソッドは、diaryモデルファイル内に記載あり
+      @diary.save_diary_tags(tag_list) 
+
       redirect_to diaries_path, notice: '登録完了しました'
     else
       render :new, status: :unprocessable_entity

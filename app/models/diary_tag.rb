@@ -4,5 +4,5 @@ class DiaryTag < ApplicationRecord
     has_many :diary_tag_relations, dependent: :destroy
     has_many :diaries, through: :diary_tag_relations
 
-    validates: name, presence: true, length: { maximum: 50 }
+    validates :name, presence: true, length: { maximum: 50 }
 end

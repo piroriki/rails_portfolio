@@ -6,6 +6,7 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = Diary.all
+    @tag_list = DiaryTag.all
   end
 
   def new
@@ -19,7 +20,7 @@ class DiariesController < ApplicationController
     tag_list = params[:diary][:name].split(',')
 
     if @diary.save
-      
+
       # 紐づいたタグを保存するメソッドは、diaryモデルファイル内に記載あり
       @diary.save_diary_tags(tag_list) 
 
@@ -44,6 +45,17 @@ class DiariesController < ApplicationController
   def destroy
     @diary.destroy
     redirect_to diaries_path, notice: '削除完了しました'
+  end
+
+  def seaech_tag
+    # 検索画面でタグを一覧表示する
+    @tag_list = DiaryTag.all
+
+    # 検索されたタグを受け取る変数を設定する
+    @tag = DiaryTag.find(params[:diary_tag_id])
+
+    # 検索されたタグに紐づく育児日記を表示する
+    @diaries = @tag.diaries
   end
 
   private

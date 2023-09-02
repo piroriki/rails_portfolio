@@ -1,5 +1,13 @@
 h1 日記の記録一覧
 
+// タグリストを表示させる
+- @tag_list.each do |list|
+  div.class
+    fa-sharp.fa-solid.fa-tag
+  = link_to list.name, search_tag_path(diary_tag_id: list.id)
+  = "(#{list.diaries.count})"
+end
+
 = link_to '新規登録', new_diary_path, class: 'btn btn-primary'
 
 .mb-3 

@@ -34,10 +34,15 @@ class DiariesController < ApplicationController
   end
 
   def edit
+    # 日記に紐づく全てのdiary_tagを取得後,で連結し、ひとつの配列として@tag_listに格納させる
+    @tag_list = @diary.diary_tags.pluck(:name).join(',')
   end
 
   def update
+    @tag_list = params[:diary][:name].split(',')
+
     if @diary.update(diary_params)
+      @diary.save_diary_tags(tag_list)
       redirect_to diaries_path, notice: "更新完了しました"
     else
       render :edit, status: :unprocessable_entity

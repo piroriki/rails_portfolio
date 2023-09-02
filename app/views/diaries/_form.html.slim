@@ -18,3 +18,14 @@
       = f.file_field :image, class: 'form-control'
 
     = f.submit '登録する', class: 'btn btn-primary'
+
+    .form-group
+      | タグ(「,」で区切ると、複数タグを保存できます)
+      = text_field :name, value: @tag_list, class: 'form-control'
+
+    if diary.new_record? 
+      = f.submit '登録する', class: 'form-comtrol'
+    else 
+      = f.submit '更新する', class: 'form-control'
+    end
+

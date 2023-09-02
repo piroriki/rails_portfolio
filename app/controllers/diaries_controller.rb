@@ -2,6 +2,8 @@ class DiariesController < ApplicationController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
 
   def show
+    @tag_list = @diary.diary_tags.pluck(:name).join(',')
+    @diary_tags = @diary.diary_tags
   end
 
   def index

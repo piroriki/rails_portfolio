@@ -2,7 +2,7 @@ class DiariesController < ApplicationController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
 
   def show
-    @tag_list = @diary.diary_tags.pluck(:name).join(',')
+    @tag_list = @diary.diary_tags.pluck(:tag_name).join(',')
     @diary_tags = @diary.diary_tags
   end
 
@@ -19,7 +19,7 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.new(diary_params)
 
     # 受け取った値を,で分割して配列にする
-    tag_list = params[:diary][:name].split(',')
+    tag_list = params[:diary][:tag_name].split(',')
 
     if @diary.save
 
@@ -35,14 +35,14 @@ class DiariesController < ApplicationController
 
   def edit
     # 日記に紐づく全てのdiary_tagを取得後,で連結し、ひとつの配列として@tag_listに格納させる
-    @tag_list = @diary.diary_tags.pluck(:name).join(',')
+    @tag_list = @diary.diary_tags.pluck(:tag_name).join(',')
   end
 
   def update
-    @tag_list = params[:diary][:name].split(',')
+    @tag_list = params[:diary][:tag_name].split(',')
 
     if @diary.update(diary_params)
-      @diary.save_diary_tags(tag_list)
+      @diary.save_diary_tags(@tag_list)
       redirect_to diaries_path, notice: "更新完了しました"
     else
       render :edit, status: :unprocessable_entity
@@ -54,7 +54,7 @@ class DiariesController < ApplicationController
     redirect_to diaries_path, notice: '削除完了しました'
   end
 
-  def seaech_tag
+  def search_tag
     # 検索画面でタグを一覧表示する
     @tag_list = DiaryTag.all
 

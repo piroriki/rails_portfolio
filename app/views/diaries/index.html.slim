@@ -4,7 +4,7 @@ h1 日記の記録一覧
 - @tag_list.each do |list|
   div.class
     fa-sharp.fa-solid.fa-tag
-  = link_to list.name, search_tag_path(diary_tag_id: list.id)
+  = link_to list.tag_name, search_tag_path(diary_tag_id: list.id)
   = "(#{list.diaries.count})"
 end
 
@@ -16,6 +16,7 @@ table.table.table-hover
     tr 
       th = Diary.human_attribute_name(:title)
       th = Diary.human_attribute_name(:content)
+      th = DiaryTag.human_attribute_name(:tag_name)
       th = Diary.human_attribute_name(:created_at)
       th 
     
@@ -24,6 +25,7 @@ table.table.table-hover
       tr 
         td = link_to diary.title, diary_path(diary) 
         td = diary.content 
+        //td = diary.diary_tag.tag_name
         td = l diary.created_at
         td
           = link_to '編集', edit_diary_path(diary), class:'btn btn-primary mr-3'

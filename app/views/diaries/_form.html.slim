@@ -15,17 +15,11 @@
 
     .form-group
       = f.label :image
-      = f.file_field :image, class: 'form-control'
-
-    = f.submit '登録する', class: 'btn btn-primary'
+      = f.file_field :image, class: 'form-control', id: 'diary_image'
 
     .form-group
       | タグ(「,」で区切ると、複数タグを保存できます)
-      = text_field :name, value: @tag_list, class: 'form-control'
+      = f.text_area :tag_name, class: 'form-control', id: 'diary_tag_name'
 
-    if diary.new_record? 
-      = f.submit '登録する', class: 'form-comtrol'
-    else 
-      = f.submit '更新する', class: 'form-control'
-    end
+    = f.submit '登録する', class: 'btn btn-primary'
 

@@ -1,0 +1,6 @@
+h1 タグ「#{@tag.tag_name}」の日記一覧
+
+// タグリスト
+- @tag_list.each do |list|
+    = link_to list.tag_name, search_tag_path(diary_tag_id:
+      list.id)

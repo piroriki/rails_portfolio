@@ -5,6 +5,7 @@ class CreateDiaryTagRelations < ActiveRecord::Migration[7.0]
       t.references :diary_tag, foreign_key: true, null: false
 
       t.timestamps
+
     end
   end
 end

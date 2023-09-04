@@ -4,7 +4,7 @@ class Diary < ApplicationRecord
 
     # タグの関連付けのみ記載しておく
     has_many :diary_tag_relations, dependent: :destroy
-    has_many :diary_tags, through: :diary_tag_relations
+    has_many :diary_tags, through: :diary_tag_relations, source: :diary_tag
 
     # activestorageと紐づける
     has_one_attached :image
@@ -15,9 +15,10 @@ class Diary < ApplicationRecord
     validates :title, presence: true, length: { maximum: 100 }
     validates :content, presence: true, length: { maximum: 5000 }
 
+
     def save_diary_tags(tags)
         # タグが存在する場合、タグ名を配列として全て取得する
-        current_tags = self.diary_tagspluck(:name) unless self.diary_tags.nil?
+        current_tags = self.diary_tags.pluck(:tag_name) unless self.diary_tags.nil?
 
         # 現在取得済みのタグを選別し、残りはold_tagsとして削除対象とする
         old_tags = current_tags - tags
@@ -26,14 +27,14 @@ class Diary < ApplicationRecord
         new_tags = tags - current_tags
 
         # old_tagsを削除する
-        old_tags.each do |old_name|
-            self.diary_tags.delete DiaryTag.find_by(name: old_name)
+        old_tags.each do |old_tag|
+            self.diary_tags.delete DiaryTag.find_by(tag_name: old_tag)
         end
 
         # new_tagsを保存する
         new_tags.each do |new_tag|
-            diary_tag = DiaryTag.find_or_create_by(name: new_tag)
-            self.diary_tags << diary_tag
+            new_diary_tag = DiaryTag.find_or_create_by(tag_name: new_tag)
+            self.diary_tags << new_diary_tag
         end
     end
      

@@ -28,6 +28,8 @@ table.table.table-hover
 
 - @diary_tags.each do |tag|
   = link_to tag.tag_name, search_tag_path(diary_tag_id: tag.id)
+  = "(#{tag.diaries.count})"
+end
 
 = link_to '編集', edit_diary_path, class: 'btn btn-primary mr-3'
 = link_to '削除', diary_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

@@ -74,13 +74,18 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry-rails"
   gem "pry-doc"
-  gem "pry-byebug"
   gem "pry-stack_explorer"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # デバッグ用
+  gem "better_errors"
+  gem "byebug"
+  gem "pry-byebug"
+
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

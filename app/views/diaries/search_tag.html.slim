@@ -1,8 +1,7 @@
 h5 タグ「#{@tag.tag_name}」の日記一覧
 
 // タグリスト
-- @tag_list.each do |list|
-  binding.pry
+//- @tag_list.each do |list|
   = link_to list.tag_name, search_tag_path(diary_tag_id:
     list.id)
   = "(#{list.diaries.count})"
@@ -10,7 +9,7 @@ end
 
 // 日記をカード型で表示する
 
-- @diaries.each do |diary|
+//- @diaries.each do |diary|
   = link_to diary_path(diary.id) do 
     diary.title.truncate(25)
     //　お気に入り、コメント数、投稿者は共通テンプレ予定

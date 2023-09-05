@@ -18,6 +18,10 @@ h1 ミルクの記録一覧
     = f.submit class: 'btn btn-outline-primary'
 
 = link_to '新規登録', new_milk_path, class: 'btn btn-primary'
+
+.mb-3 
+  = paginate @milks
+  = page_entries_info @milks
 //ここまで
 
 .mb-3 

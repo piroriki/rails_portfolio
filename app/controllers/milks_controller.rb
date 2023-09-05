@@ -2,6 +2,7 @@ class MilksController < ApplicationController
 
   before_action :set_milk, only: [:show, :edit, :update, :destroy]
 
+  # パンくずリストを追加する
   add_breadcrumb 'ホーム', 'http://localhost:3000'
   add_breadcrumb 'ミルク一覧', 'milks_path', only: [:index]
   add_breadcrumb 'ミルク詳細', 'milk_path', only: [:show]
@@ -21,7 +22,8 @@ class MilksController < ApplicationController
       @milks = Milk.all
     end
     
-    #@milks = @q.result(distinct: true).recent #resentスコープで表示順を変更
+    # kaminariで１ページあたり２５件を表示する（デフォルト設定）
+    @milks = @q.result(distinct: true).page(params[:page])
   end
 
   def new

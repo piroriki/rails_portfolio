@@ -53,10 +53,13 @@ gem "rails_autolink"
 gem "rails-i18n"
 
 # 検索機能を追加
-gem 'ransack'
+gem "ransack"
 
 # パンくずリスト作成用
-gem 'breadcrumbs_on_rails'
+gem "breadcrumbs_on_rails"
+
+# ページネーション用
+gem "kaminari"
 
 #gem "validates_email_format_of"
 

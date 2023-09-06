@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_000415) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_050039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -126,6 +126,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_000415) do
     t.index ["user_id"], name: "index_symptoms_on_user_id"
   end
 
+  create_table "temperatures", force: :cascade do |t|
+    t.integer "temperature", null: false
+    t.datetime "time", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_temperatures_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -157,5 +166,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_000415) do
   add_foreign_key "medicines", "users"
   add_foreign_key "milks", "users"
   add_foreign_key "symptoms", "users"
+  add_foreign_key "temperatures", "users"
   add_foreign_key "vaccinations", "users"
 end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'body_temperature/index'
+  get 'body_temperature/new'
+  get 'body_temperature/show'
+  get 'body_temperature/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'

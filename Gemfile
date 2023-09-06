@@ -61,6 +61,9 @@ gem "breadcrumbs_on_rails"
 # ページネーション用
 gem "kaminari"
 
+# グラフ作成用
+gem "chartkick"
+
 #gem "validates_email_format_of"
 
 # Use Sass to process CSS

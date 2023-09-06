@@ -10,6 +10,7 @@ class User < ApplicationRecord
     has_many :symptoms, dependent: :destroy
     has_many :vaccinations, dependent: :destroy
     has_many :diaries, dependent: :destroy
+    has_many :temperatures, dependent: :destroy
 
     validates :name, presence: true, length: { maximum: 50 }
     validates :email, presence: true, uniqueness: true, length: { maximum: 100 }

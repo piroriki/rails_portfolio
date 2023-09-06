@@ -12,7 +12,7 @@ class TemperaturesController < ApplicationController
   end
 
   def index
-    @temperatures = .all
+    @temperatures = Temperature.all
     # @q = current_user.tempratures.ransack(params[:q], auth_object: set_ransack_auth_object)
 
     # if @q
@@ -23,7 +23,6 @@ class TemperaturesController < ApplicationController
     
     # kaminariで１ページあたり２５件を表示する（デフォルト設定）
     # @temperatures = @q.result(distinct: true).page(params[:page])
-    @temeratures =page(params[:page])
   end
 
   def new
@@ -54,12 +53,12 @@ class TemperaturesController < ApplicationController
 
   def destroy
     @temperature.destroy
-    redirect_to temeratures_path, notice: '削除完了しました'
+    redirect_to temperatures_path, notice: '削除完了しました'
   end
 
   private
 
-  def temerature_params
+  def temperature_params
     params.require(:temperature).permit(:temperature, :time).merge(user_id: current_user.id)
   end
 

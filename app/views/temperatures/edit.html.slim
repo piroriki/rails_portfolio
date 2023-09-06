@@ -1,2 +1,8 @@
-h1 BodyTemperature#edit
-p Find me in app/views/body_temperature/edit.html.slim
+h1 体温の編集
+
+= render_breadcrumbs separator: '>'
+
+.nav.justify-content-end 
+  = link_to '体温一覧', temperatures_path, class: 'nav-link'
+
+= render partial: 'form', locals: { temperature: @temperature }

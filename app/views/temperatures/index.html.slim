@@ -1,2 +1,28 @@
-h1 BodyTemperature#index
-p Find me in app/views/body_temperature/index.html.slim
+h1 体温の記録一覧
+
+// パンくずリスト表示
+= render_breadcrumbs separator: '>'
+
+// kaminariでページネーション追加
+.mb-3 
+  = paginate @temperatures
+  = page_entries_info @temperatures
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Temperature.human_attribute_name(:temperature)
+      th = Temperature.human_attribute_name(:time)
+      th = Temperature.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @temperatures.each do |temperature|
+      tr 
+        td = link_to temperature.temperature, temperature_path(temperature) 
+        td = l temperature.time  
+        td = l temperature.created_at
+        td
+          = link_to '編集', edit_temperature_path(temperature), class:'btn btn-primary mr-3'
+          = link_to '削除', temperature_path(temperature), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

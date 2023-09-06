@@ -1,2 +1,8 @@
-h1 BodyTemperature#new
-p Find me in app/views/body_temperature/new.html.slim
+= render_breadcrumbs separator: '>'
+
+h1 体温の新規登録
+
+.nav.justify-content-end 
+  = link_to '体温一覧', temperatures_path, class: 'nav-link'
+
+= render partial: 'form', locals: { temperature: @temperature }

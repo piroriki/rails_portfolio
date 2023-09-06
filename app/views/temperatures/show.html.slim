@@ -1,2 +1,27 @@
-h1 BodyTemperature#show
-p Find me in app/views/body_temperature/show.html.slim
+h1 体温の詳細内容
+
+= render_breadcrumbs separator: '>'
+
+nav.justify-content-end 
+  = link_to '体温一覧', temparatures_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Temperature.human_attribute_name(:id)
+      td = @temperature.id
+    tr
+      th = Temperature.human_attribute_name(:temperature)
+      td = @temperature.temperature
+    tr 
+      th = Temperature.human_attribute_name(:time)
+      td = l @temperature.time
+    tr 
+      th = Temperature.human_attribute_name(:created_at)
+      td = l @temperature.created_at
+    tr 
+      th = Temperature.human_attribute_name(:updated_at)
+      td = l @temperature.updated_at
+
+= link_to '編集', edit_temperature_path, class: 'btn btn-primary mr-3'
+= link_to '削除', temperature_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

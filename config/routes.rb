@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   root to: 'tops#index' # トップページのみ別コントローラで作成
 
-  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries
+  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries, :temperatures
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

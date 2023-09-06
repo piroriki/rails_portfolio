@@ -1,22 +1,6 @@
 ja:
-  views:
-    pagination:
-      first: "&laquo; 最初"
-      last: "最後 &raquo;"
-      previours: "&lsaquo; 前"
-      next: "次 &rsaquo;"
-      truncate: "&hellip;"
 
   helpers:
-
-    page_entries_info:
-      one_page:
-        display_entries:
-          zero: "%{entry_name}がありません"
-          one: "1件の%{entry_name}が表示されています"
-          other: "%{count}件の%{entry_name}が表示されています"
-      more_pages:
-        display_entries: "全%{total}件中%{first}&nbsp;-&nbsp;%{last}件の%{entry_name}が表示されています"
 
     submit:
       create: 登録する
@@ -56,6 +40,7 @@ ja:
       symptom: 症状
       vaccination: 予防接種
       diary: 日記
+      temperature: 体温
 
     attributes:
       user:
@@ -127,6 +112,13 @@ ja:
         title: タイトル
         content: 本文
         image: 画像
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      temperature: 
+        id: ID
+        temperature: 体温
+        time: 時間
         created_at: 登録日時
         updated_at: 更新日時
     

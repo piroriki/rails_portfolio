@@ -3,7 +3,7 @@ class CreateHeights < ActiveRecord::Migration[7.0]
     create_table :heights do |t|
 
       t.float :height, null: false
-      t.date :time, null: false
+      t.datetime :time, null: false
 
       t.references :user, foreign_key: true, null: false
 

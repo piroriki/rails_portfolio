@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_090339) do
 
   create_table "heights", force: :cascade do |t|
     t.float "height", null: false
-    t.date "time", null: false
+    t.datetime "time", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

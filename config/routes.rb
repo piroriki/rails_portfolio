@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'head_circumferences/index'
-  get 'head_circumferences/new'
-  get 'head_circumferences/show'
-  get 'head_circumferences/edit'
-  get 'body_temperature/index'
-  get 'body_temperature/new'
-  get 'body_temperature/show'
-  get 'body_temperature/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'
@@ -21,7 +13,7 @@ Rails.application.routes.draw do
 
   root to: 'tops#index' # トップページのみ別コントローラで作成
 
-  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries, :temperatures, :head_circumferences
+  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries, :temperatures, :head_circumferences, :heights
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

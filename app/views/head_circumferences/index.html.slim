@@ -20,9 +20,9 @@ h1 頭囲の記録一覧
 = link_to '新規登録', new_head_circumference_path, class: 'btn btn-primary'
 
 // kaminariでページネーション追加
-.mb-3 
-  = paginate @head_circumferences
-  = page_entries_info @head_circumferences
+// .mb-3 
+//   = paginate @head_circumferences
+//   = page_entries_info @head_circumferences
 
 .mb-3 
 table.table.table-hover
@@ -37,7 +37,7 @@ table.table.table-hover
   tbody 
     - @head_circumferences.each do |head_circumference|
       tr 
-        td = link_to head_circumferences, head_circumference_path(head_circumference) 
+        td = link_to head_circumference.circumference, head_circumference_path(head_circumference) 
         td = l head_circumference.time 
         td = l head_circumference.created_at
         td

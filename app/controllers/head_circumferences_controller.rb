@@ -8,8 +8,10 @@ class HeadCircumferencesController < ApplicationController
   add_breadcrumb '頭囲詳細', 'head_circumference_path', only: [:show]
   add_breadcrumb '頭囲新規登録', 'new_head_circumference_path', only: [:new]
   add_breadcrumb '頭囲更新', 'edit_head_circumference_path', only: [:edit]  
+  
   def show
   end 
+  
   def index
     @head_circumferences = HeadCircumference.all
     # @q = current_user.milks.ransack(params[:q], auth_object: set_ransack_auth_object) 
@@ -29,11 +31,13 @@ class HeadCircumferencesController < ApplicationController
 
   def create
     @head_circumference = current_user.head_circumferences.new(head_circumference_params) 
+    
     if @head_circumference.save
       redirect_to head_circumferences_path, notice: '登録完了しました'
     else
       render :new, status: :unprocessable_entity
     end 
+
   end 
 
   def edit
@@ -61,7 +65,7 @@ class HeadCircumferencesController < ApplicationController
   end 
 
   def set_head_circumference
-    @milk = current_user.head_circumferences.find(params[:id])
+    @head_circumference = current_user.head_circumferences.find(params[:id])
   end
 
   # def set_ransack_auth_object

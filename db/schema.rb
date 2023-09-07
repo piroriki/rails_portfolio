@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_033941) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_042044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_033941) do
   end
 
   create_table "head_circumferences", force: :cascade do |t|
-    t.integer "circumference", null: false
+    t.float "circumference", null: false
     t.datetime "time", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

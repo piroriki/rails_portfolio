@@ -1,2 +1,27 @@
-h1 HeadCircumferences#show
-p Find me in app/views/head_circumferences/show.html.slim
+h1 頭囲の詳細内容
+
+= render_breadcrumbs separator: '>'
+
+nav.justify-content-end 
+  = link_to '頭囲一覧', head_circumferences_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = HeadCircumference.human_attribute_name(:id)
+      td = @head_circumference.id
+    tr 
+      th = HeadCircumference.human_attribute_name(:circumference)
+      td = @head_circumference.amount
+    tr 
+      th = HeadCircumference.human_attribute_name(:time)
+      td = l @head_circumference.time
+    tr 
+      th = HeadCircumference.human_attribute_name(:created_at)
+      td = l @head_circumference.created_at
+    tr 
+      th = HeadCircumference.human_attribute_name(:updated_at)
+      td = l @head_circumference.updated_at
+
+= link_to '編集', edit_head_circumference_path, class: 'btn btn-primary mr-3'
+= link_to '削除', head_circumferernce_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

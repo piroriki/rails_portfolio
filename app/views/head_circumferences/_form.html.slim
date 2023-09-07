@@ -1,0 +1,16 @@
+- if head_circumference.errors.present?
+  ul#error_explanation 
+    - head_circumference.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: head_circumference, local: true do |f|
+
+    .form-group 
+      = f.label :circumference
+      = f.number_field :circumference, class: 'form-control', id: 'head_circumference_circumference'
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'head_circumference_time'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

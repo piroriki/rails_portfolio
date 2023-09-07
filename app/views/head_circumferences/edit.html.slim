@@ -1,2 +1,8 @@
-h1 HeadCircumferences#edit
-p Find me in app/views/head_circumferences/edit.html.slim
+h1 頭囲の編集
+
+= render_breadcrumbs separator: '>'
+
+.nav.justify-content-end 
+  = link_to '頭囲一覧', head_circumferences_path, class: 'nav-link'
+
+= render partial: 'form', locals: { head_circumference: @head_circumference }

@@ -1,2 +1,8 @@
-h1 HeadCircumferences#new
-p Find me in app/views/head_circumferences/new.html.slim
+= render_breadcrumbs separator: '>'
+
+h1 頭囲の新規登録
+
+.nav.justify-content-end 
+  = link_to '一覧', head_circumferences_path, class: 'nav-link'
+
+= render partial: 'form', locals: { head_circumference: @head_circumference }

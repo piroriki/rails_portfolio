@@ -42,6 +42,7 @@ ja:
       diary: 日記
       temperature: 体温
       head_circumference: 頭囲
+      height: 身長
 
     attributes:
       user:
@@ -126,6 +127,13 @@ ja:
       head_circumference:
         id: ID
         circumference: 頭囲
+        time: 時間
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      height:
+        id: ID
+        height: 身長
         time: 時間
         created_at: 登録日時
         updated_at: 更新日時

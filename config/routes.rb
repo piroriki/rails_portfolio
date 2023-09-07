@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'head_circumferences/index'
+  get 'head_circumferences/new'
+  get 'head_circumferences/show'
+  get 'head_circumferences/edit'
   get 'body_temperature/index'
   get 'body_temperature/new'
   get 'body_temperature/show'

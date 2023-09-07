@@ -1,2 +1,8 @@
-h1 Height#new
-p Find me in app/views/height/new.html.slim
+= render_breadcrumbs separator: '>'
+
+h1 身長の新規登録
+
+.nav.justify-content-end 
+  = link_to '一覧', heights_path, class: 'nav-link'
+
+= render partial: 'form', locals: { height: @height }

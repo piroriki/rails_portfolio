@@ -1,2 +1,27 @@
-h1 Height#show
-p Find me in app/views/height/show.html.slim
+h1 身長の詳細内容
+
+= render_breadcrumbs separator: '>'
+
+nav.justify-content-end 
+  = link_to '身長一覧', heights_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Height.human_attribute_name(:id)
+      td = @height.id
+    tr 
+      th = Height.human_attribute_name(:height)
+      td = @height.height
+    tr 
+      th = Height.human_attribute_name(:time)
+      td = l @height.time
+    tr
+      th = Height.human_attribute_name(:created_at)
+      td = l @height.created_at
+    tr 
+      th = Height.human_attribute_name(:updated_at)
+      td = l @height.updated_at
+
+= link_to '編集', edit_height_path, class: 'btn btn-primary mr-3'
+= link_to '削除', height_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

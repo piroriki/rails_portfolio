@@ -1,0 +1,16 @@
+- if height.errors.present?
+  ul#error_explanation 
+    - height.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: height, local: true do |f|
+
+    .form-group 
+      = f.label :height
+      = f.number_field :amount, step: '0.1', class: 'form-control', id: 'height_height'
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'height_time'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

@@ -1,2 +1,8 @@
-h1 Height#edit
-p Find me in app/views/height/edit.html.slim
+h1 身長の編集
+
+= render_breadcrumbs separator: '>'
+
+.nav.justify-content-end 
+  = link_to '身長一覧', heights_path, class: 'nav-link'
+
+= render partial: 'form', locals: { height: @height }

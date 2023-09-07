@@ -1,2 +1,45 @@
-h1 Height#index
-p Find me in app/views/height/index.html.slim
+h1 身長の記録一覧
+
+// パンくずリスト表示
+= render_breadcrumbs separator: '>'
+
+//ransackで検索機能追加
+// = search_form_for @q, class: 'mb-5' do |f|
+  .form-group.row 
+    = f.label :memo_cont, 'メモ', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :memo_cont, class: 'form-control'
+  
+  .form-group.row 
+    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :created_at_gteq, class: 'form-control'
+  .form-group 
+    = f.submit class: 'btn btn-outline-primary'
+
+= link_to '新規登録', new_height_path, class: 'btn btn-primary'
+
+// kaminariでページネーション追加
+// .mb-3 
+  = paginate @milks
+  = page_entries_info @milks
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Height.human_attribute_name(:height)
+      // th = sort_link(@q, :kinds, default_order: :desc)
+      th = Height.human_attribute_name(:time)
+      th = Height.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @heights.each do |height|
+      tr 
+        td = link_to height.height, height_path(height) 
+        td = l height.time  
+        td = l height.created_at
+        td
+          = link_to '編集', edit_height_path(height), class:'btn btn-primary mr-3'
+          = link_to '削除', height_path(height), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

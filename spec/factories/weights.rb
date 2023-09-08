@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :weight do
-    weight { 1.5 }
-    time { "2023-09-08 07:57:40" }
+    id { 1 }
+    weight { "9.5" }
+    time { "12:12" }
+
+    association :user
   end
 end

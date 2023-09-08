@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # 育児記録まとめ用
   get 'summary', to: 'tops#summary'
 
+  # ミルク記録まとめ用
+  get 'milks_summary', to: 'milks#milks_summary'
+
   namespace :admin do
     resources :users
   end

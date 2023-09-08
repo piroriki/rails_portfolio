@@ -57,6 +57,9 @@ class MilksController < ApplicationController
     redirect_to milks_path, notice: '削除完了しました'
   end
 
+  def milks_summary
+  end
+
   private
 
   def milk_params

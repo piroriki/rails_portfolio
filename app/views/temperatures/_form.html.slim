@@ -7,7 +7,7 @@
 
     .form-group 
       = f.label :temperature
-      = f.number_field :temperature, class: 'form-control', id: 'temperature_temperature'
+      = f.number_field :temperature, step: '0.1', class: 'form-control', id: 'temperature_temperature'
 
     .form-group 
       = f.label :time

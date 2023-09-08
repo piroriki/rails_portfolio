@@ -1,2 +1,27 @@
-h1 Weights#show
-p Find me in app/views/weights/show.html.slim
+h1 体重の詳細内容
+
+= render_breadcrumbs separator: '>'
+
+nav.justify-content-end 
+  = link_to '体重一覧', weights_path, class:'btn btn-primary'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = Weight.human_attribute_name(:id)
+      td = @weight.id
+    tr 
+      th = Weight.human_attribute_name(:weight)
+      td = @weight.weight
+    tr 
+      th = Weight.human_attribute_name(:time)
+      td = l @weight.time
+    tr 
+      th = Weight.human_attribute_name(:created_at)
+      td = l @weight.created_at
+    tr 
+      th = Weight.human_attribute_name(:updated_at)
+      td = l @weight.updated_at
+
+= link_to '編集', edit_weight_path, class: 'btn btn-primary mr-3'
+= link_to '削除', weight_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

@@ -1,2 +1,45 @@
-h1 Weights#index
-p Find me in app/views/weights/index.html.slim
+h1 体重の記録一覧
+
+// パンくずリスト表示
+= render_breadcrumbs separator: '>'
+
+//ransackで検索機能追加
+// = search_form_for @q, class: 'mb-5' do |f|
+  .form-group.row 
+    = f.label :memo_cont, 'メモ', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :memo_cont, class: 'form-control'
+  
+  .form-group.row 
+    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :created_at_gteq, class: 'form-control'
+  .form-group 
+    = f.submit class: 'btn btn-outline-primary'
+
+= link_to '新規登録', new_weight_path, class: 'btn btn-primary'
+
+// kaminariでページネーション追加
+// .mb-3 
+  = paginate @milks
+  = page_entries_info @milks
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default 
+    tr 
+      th = Weight.human_attribute_name(:weight)
+      // th = sort_link(@q, :kinds, default_order: :desc)
+      th = Weight.human_attribute_name(:time)
+      th = Weight.human_attribute_name(:created_at)
+      th 
+    
+  tbody 
+    - @weights.each do |weight|
+      tr 
+        td = link_to weight.weight, weight_path(weight) 
+        td = l weight.time 
+        td = l weight.created_at
+        td
+          = link_to '編集', edit_weight_path(weight), class:'btn btn-primary mr-3'
+          = link_to '削除', weight_path(weight), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

@@ -1,2 +1,8 @@
-h1 Weights#edit
-p Find me in app/views/weights/edit.html.slim
+h1 体重の編集
+
+= render_breadcrumbs separator: '>'
+
+.nav.justify-content-end 
+  = link_to '体重一覧', weights_path, class: 'nav-link'
+
+= render partial: 'form', locals: { weight: @weight }

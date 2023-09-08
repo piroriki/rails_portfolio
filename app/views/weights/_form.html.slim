@@ -1,0 +1,16 @@
+- if weight.errors.present?
+  ul#error_explanation 
+    - weight.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: weight, local: true do |f|
+
+    .form-group 
+      = f.label :weight
+      = f.number_field :amount, step: '0.1', class: 'form-control', id: 'weight_weight'
+
+    .form-group 
+      = f.label :time
+      = f.time_field :time, class:'form-control', id: 'weight_time'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

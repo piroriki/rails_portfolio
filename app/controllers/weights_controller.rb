@@ -27,7 +27,7 @@ class WeightsController < ApplicationController
   end
 
   def new
-    @mweight = Weight.new
+    @weight = Weight.new
   end
 
   def create
@@ -71,6 +71,4 @@ class WeightsController < ApplicationController
   #   current_user.admin? ? :admin : nil
   # end
   
-end
-
 end

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  # 日記検索画面用
   get 'search_tag', to: 'diaries#search_tag'
+
+  # 育児記録まとめ用
+  get 'summary', to: 'tops#summary'
 
   namespace :admin do
     resources :users

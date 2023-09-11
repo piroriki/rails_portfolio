@@ -58,6 +58,27 @@ class MilksController < ApplicationController
   end
 
   def milks_summary
+    wdays =['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
+
+    @today_date = Date.today
+
+    @week_days = []
+
+    milks = Milk.where(time: @today_date..@today_date + 6)
+
+    7.times do |m|
+      
+      today_milks = []
+      
+      milks.each do |milk|
+        today_milks.push(milk.kinds) if milk.created_at.to_date == @today_date + m
+      end
+      
+      days = { month: (@today_date + m).month, date: (@today_date + m).day, milks: today_milks, wdays: wdays[(@today_date + m).wday]}
+
+      @week_days.push(days)
+    end
+
   end
 
   private

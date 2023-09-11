@@ -1,1 +1,16 @@
 h1 ミルク記録まとめ
+
+- @week_days.each do |day|
+  = day[:month]
+  | 月
+  = day[:date]
+  | 日
+  = day[:wdays]
+
+  - if day[:milks].length != 0
+    - day[:milks].each do |milk|
+      | ・
+      = milk 
+    end
+  end
+end

@@ -3,7 +3,7 @@ h1 ミルクの記録一覧
 // パンくずリスト表示
 = render_breadcrumbs separator: '>'
 
-//ransackで検索機能追加
+// ransackで検索機能追加
 = search_form_for @q, class: 'mb-5' do |f|
   .form-group.row 
     = f.label :memo_cont, 'メモ', class: 'col-sm-2 col-form-label'

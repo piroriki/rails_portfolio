@@ -1,5 +1,11 @@
 ja:
 
+  enums:
+    milk:
+      milk_kinds:
+        milk: ミルク
+        breast_milk: 母乳
+
   helpers:
 
     submit:

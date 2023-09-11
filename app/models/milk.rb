@@ -2,6 +2,8 @@ class Milk < ApplicationRecord
 
     belongs_to :user
 
+    enum milk_kinds: { milk: 0, breast_milk: 1 }
+
     # 登録日時に関して降順で選択する
     scope :recent, -> { order(created_at: :desc) }
 

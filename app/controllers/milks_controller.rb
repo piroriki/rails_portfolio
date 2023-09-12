@@ -71,7 +71,7 @@ class MilksController < ApplicationController
       today_milks = []
       
       milks.each do |milk|
-        today_milks.push(milk.kinds) if milk.created_at.to_date == @today_date + m
+        today_milks.push(milk) if milk.created_at.to_date == @today_date + m
       end
 
       days = { month: (@today_date + m).month, date: (@today_date + m).day, milks: today_milks, wdays: wdays[(@today_date + m).wday]}

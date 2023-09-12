@@ -10,7 +10,13 @@ h1 ミルク記録まとめ
   - if day[:milks].length != 0
     - day[:milks].each do |milk|
       | ・
-      = milk 
+      = milk.kind
+      | ・
+      = milk.amount
+      | ・
+      = l milk.time 
+      | ・
+      = milk.memo 
     end
   end
 end

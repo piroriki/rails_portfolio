@@ -1,11 +1,5 @@
 ja:
 
-  enums:
-    milk:
-      milk_kinds:
-        milk: ミルク
-        breast_milk: 母乳
-
   helpers:
 
     submit:
@@ -60,7 +54,7 @@ ja:
         
       milk:
         id: ID
-        kinds: 種類
+        kind: 種類
         milk: ミルク
         breast_milk: 母乳
         amount: 量
@@ -68,6 +62,10 @@ ja:
         memo: メモ
         created_at: 登録日時
         updated_at: 更新日時
+      milk/kind:
+        milk: ミルク
+        left_breast_milk: 母乳(左）
+        right_breast_milk: 母乳(右)
 
       meal:
         id: ID

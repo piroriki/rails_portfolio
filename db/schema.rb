@@ -130,7 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_222901) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.integer "kinds"
+    t.integer "kind", default: 0, null: false
     t.index ["user_id"], name: "index_milks_on_user_id"
   end
 

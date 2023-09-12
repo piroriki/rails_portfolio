@@ -6,11 +6,8 @@
 = form_with model: milk, local: true do |f|
 
     .form-group 
-      = f.radio_button :milk_kinds, Milk.milk_kinds.key(0)
-      = f.label :milk_kinds, Milk.milk_kinds_i18n[:milk], value: Milk.milk_kinds.key(0)
-
-      = f.radio_button :milk_kinds, Milk.milk_kinds.key(1)
-      = f.label :milk_kinds, Milk.milk_kinds_i18n[:breast_milk], value: Milk.milk_kinds.key(1)
+      = f.label :kind
+      = f.select :kind, Milk.milk_kinds.keys.map{ |k| [k,k]}, {}, {class: 'form-control', style: 'margin-bottom: 15px;', data: {} }
 
     .form-group 
       = f.label :amount

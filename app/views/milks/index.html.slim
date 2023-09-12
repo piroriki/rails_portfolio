@@ -30,7 +30,7 @@ table.table.table-hover
   thead.thead-default 
     tr 
       //th = Milk.human_attribute_name(:kinds)
-      th = sort_link(@q, :kinds, default_order: :desc)
+      th = sort_link(@q, :kind, default_order: :desc)
       th = Milk.human_attribute_name(:amount)
       th = Milk.human_attribute_name(:time)
       th = Milk.human_attribute_name(:memo)
@@ -40,7 +40,7 @@ table.table.table-hover
   tbody 
     - @milks.each do |milk|
       tr 
-        td = link_to milk.kinds, milk_path(milk) 
+        td = link_to milk.human_attribute_enum(:kind), milk_path(milk)
         td = milk.amount 
         td = l milk.time 
         td = milk.memo 

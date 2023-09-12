@@ -73,7 +73,7 @@ class MilksController < ApplicationController
       milks.each do |milk|
         today_milks.push(milk.kinds) if milk.created_at.to_date == @today_date + m
       end
-      
+
       days = { month: (@today_date + m).month, date: (@today_date + m).day, milks: today_milks, wdays: wdays[(@today_date + m).wday]}
 
       @week_days.push(days)
@@ -84,7 +84,7 @@ class MilksController < ApplicationController
   private
 
   def milk_params
-    params.require(:milk).permit(:kinds, :amount, :time, :memo).merge(user_id: current_user.id)
+    params.require(:milk).permit(:kind, :amount, :time, :memo).merge(user_id: current_user.id)
   end
 
   def set_milk

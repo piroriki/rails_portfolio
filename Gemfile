@@ -65,7 +65,7 @@ gem "kaminari"
 gem "chartkick"
 
 # ラジオボタン数値を日本語と紐づけるため
-gem "enum_help"
+# gem "enum_help"
 
 #gem "validates_email_format_of"
 

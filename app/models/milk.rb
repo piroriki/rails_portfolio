@@ -3,7 +3,7 @@ class Milk < ApplicationRecord
     belongs_to :user
 
     # enum用に変数定義する
-    enum milk_kind: { milk: 0, left_breast_milk: 1, right_breast_milk: 2 }
+    enum kind: { milk: 0, left_breast_milk: 1, right_breast_milk: 2 }
 
     # 登録日時に関して降順で選択する
     scope :recent, -> { order(created_at: :desc) }

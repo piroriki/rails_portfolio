@@ -12,7 +12,7 @@ table.table.table-hover
       td = @milk.id
     tr 
       th = Milk.human_attribute_name(:kind)
-      td = @milk.kind
+      td = @milk.human_attribute_enum(:kind)
     tr 
       th = Milk.human_attribute_name(:amount)
       td = @milk.amount

@@ -7,7 +7,7 @@
 
     .form-group 
       = f.label :kind
-      = f.select :kind, Milk.milk_kinds.keys.map{ |k| [k,k]}, {}, {class: 'form-control', style: 'margin-bottom: 15px;', data: {} }
+      = f.select :kind, Milk.enum_options_for_select(:kind)
 
     .form-group 
       = f.label :amount

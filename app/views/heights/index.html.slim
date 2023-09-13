@@ -26,6 +26,7 @@ h1 身長の記録一覧
 
 .mb-3 
 table.table.table-hover
+
   thead.thead-default 
     tr 
       th = Height.human_attribute_name(:height)
@@ -43,3 +44,7 @@ table.table.table-hover
         td
           = link_to '編集', edit_height_path(height), class:'btn btn-primary mr-3'
           = link_to '削除', height_path(height), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'
+
+h1 身長のグラフ表示
+= high_chart("sample",@graph)
+= link_to '身長グラフ', new_height_path

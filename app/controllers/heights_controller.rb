@@ -24,6 +24,15 @@ class HeightsController < ApplicationController
     
     # kaminariで１ページあたり２５件を表示する（デフォルト設定）
     # @milks = @q.result(distinct: true).page(params[:page])
+
+    category = [1,3,5,7]
+    current_quantity = [1000,5000,3000,8000]
+
+    @graph = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text:'ItemXXの在庫推移')
+      f.xAsix(categories: category)
+      f.series(name: '在庫数', data: current_quantity)
+    end
   end
 
   def new

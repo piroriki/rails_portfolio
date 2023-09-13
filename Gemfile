@@ -61,12 +61,6 @@ gem "breadcrumbs_on_rails"
 # ページネーション用
 gem "kaminari"
 
-# グラフ作成用
-gem "chartkick"
-
-# ラジオボタン数値を日本語と紐づけるため
-# gem "enum_help"
-
 #gem "validates_email_format_of"
 
 # Use Sass to process CSS

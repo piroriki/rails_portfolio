@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_050729) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_15_051818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_050729) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_baths_on_user_id"
+  end
+
+  create_table "child_relations", force: :cascade do |t|
+    t.bigint "child_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_child_relations_on_child_id"
+    t.index ["user_id"], name: "index_child_relations_on_user_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -195,6 +204,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_050729) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "baths", "users"
+  add_foreign_key "child_relations", "children"
+  add_foreign_key "child_relations", "users"
   add_foreign_key "children", "users"
   add_foreign_key "diaries", "users"
   add_foreign_key "diary_tag_relations", "diaries"

@@ -25,14 +25,28 @@ class HeightsController < ApplicationController
     # kaminariで１ページあたり２５件を表示する（デフォルト設定）
     # @milks = @q.result(distinct: true).page(params[:page])
 
-    category = [1,3,5,7]
-    current_quantity = [1000,5000,3000,8000]
+    # lazy_high_chartで表示する身長の発育曲線の初期値を設定する
+    xAxis_categories = ['0','1','2','3','4','5','6','7','8','9','10','11','12']
 
+    # yAxis_categories = ['0','10','20','30','40','50','60','70','80']
+
+    height_data = Height.all
+
+    tickInterval = 0.1
+
+    height_average = [49,53.5,55.6,59.1,62,64.3,66.2,67.9,69.3,70.6,71.8,72.8,73.8]
+
+      # エリアチャートのグラフデータを作成する
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text:'ItemXXの在庫推移')
-      f.xAsix(categories: category)
-      f.series(name: '在庫数', data: current_quantity)
+      f.title(text: '発育曲線(1歳までの男の子)')
+      f.chart(type: 'area')
+      f.xAxis(categories: xAxis_categories)
+      f.options[:yAxis] = { title: { text: '身長(cm)' }}
+      # 発育曲線の最高値と最低値でエリアチャート表示するデータを指定する
+      f.series(name: '平均中央値', data: height_average)
+      f.series(name: '入力値', data: height_data)
     end
+
   end
 
   def new

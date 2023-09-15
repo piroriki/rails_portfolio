@@ -44,6 +44,7 @@ ja:
       head_circumference: 頭囲
       height: 身長
       weight: 体重
+      child: 子供
 
     attributes:
       user:
@@ -147,6 +148,14 @@ ja:
         id: ID
         weight: 体重
         time: 時間
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      child:
+        id: ID
+        child_name: 子供のお名前
+        age: 年齢
+        gender: 性別
         created_at: 登録日時
         updated_at: 更新日時
     

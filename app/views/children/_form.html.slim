@@ -1,0 +1,19 @@
+- if child.errors.present?
+  ul#error_explanation 
+    - child.errors.full_messages.each do |message|
+      li = message 
+
+= form_with model: child, local: true do |f|
+  .form-group 
+    = f.label :child_name
+    = f.text_field :child_name, class: 'form-control', id: 'child_child_name'
+
+  .form-group 
+    = f.label :age
+    = f.number_field :age, class: 'form-control', id: 'child_age'
+
+  .form-group 
+    = f.label :gender
+    = f.select :gender, Child.enum_options_for_select(:gender), id: 'child_gender'
+
+  = f.submit '登録する', class: 'btn btn-primary'

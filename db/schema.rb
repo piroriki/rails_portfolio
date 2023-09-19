@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_051818) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_210218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,10 +63,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_051818) do
   create_table "children", force: :cascade do |t|
     t.string "child_name", null: false
     t.integer "age", null: false
-    t.string "gender", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender", default: 0
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 

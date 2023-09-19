@@ -1,2 +1,7 @@
-h1 Children#edit
-p Find me in app/views/children/edit.html.slim
+h1 お子様の編集
+
+.nav.justify-content-end 
+  = link_to '子供一覧', children_path, class: 'nav-link'
+
+= render partial: 'form', locals: { child: @child }
+

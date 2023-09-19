@@ -1,2 +1,23 @@
-h1 Children#index
-p Find me in app/views/children/index.html.slim
+h1 お子様一覧
+
+= link_to 'お子様の登録', new_child_path, class: 'brn btn-primary'
+
+.mb-3 
+table.table.table-hover 
+  thead.thead-default 
+    tr 
+      th = Child.human_attribute_name(:child_name)
+      th = Child.human_attribute_name(:age)
+      th = Child.human_attribute_name(:gender)
+      th = Child.human_attribute_name(:created_at)
+      th = Child.human_attribute_name(:updated_at)
+  tbody 
+    - @children.each do |child|
+      tr 
+        td = link_to child.child_name, child_path(child)
+        td = child.age
+        td = child.human_attribute_enum(:gender)
+        td = l child.created_at 
+        td = l child.updated_at 
+          = link_to '編集', edit_child_path(child), class: 'btn btn-primary mr-3'
+          = link_to '削除', child_path(child), data: { turbo_method: :delete, turbo_confirm: '#{child.child_name}を本当に削除してもよろしいですか？' }, class: 'btn btn-danger'

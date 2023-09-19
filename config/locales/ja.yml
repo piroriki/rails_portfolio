@@ -158,4 +158,8 @@ ja:
         gender: 性別
         created_at: 登録日時
         updated_at: 更新日時
+      child/gender:
+        male: 男の子
+        female: 女の子
+        others: その他
     

@@ -1,2 +1,6 @@
-h1 Children#new
-p Find me in app/views/children/new.html.slim
+h1 お子様の登録
+
+.nav.justify-content-end 
+  = link_to 'お子様一覧', children_path, class: 'nav-link'
+
+= render partial: 'form', locals: { child: @child }

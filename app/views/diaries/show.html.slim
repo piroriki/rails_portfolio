@@ -18,6 +18,10 @@ table.table.table-hover
       th = Diary.human_attribute_name(:image)
       td = image_tag @diary.image if @diary.image.attached?
     tr
+      th = DiaryTag.human_attribute_name(:tag_name)
+      - @diary.diary_tags.each do |d|
+        td = d.tag_name
+    tr
       th = Diary.human_attribute_name(:created_at)
       td = l @diary.created_at
     tr 

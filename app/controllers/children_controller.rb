@@ -37,7 +37,7 @@ class ChildrenController < ApplicationController
     @child = Child.find(params[:id])
 
     if @child.update(child_params)
-      redirect_to children_path, notice: "「#{@child.child_name}」を更新しました"
+      redirect_to children_path, notice: "「#{@child.child_name}」さんを更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,7 +52,7 @@ class ChildrenController < ApplicationController
     @child = Child.find(params[:id])
 
     @child.destroy
-    redirect_to children_path, notice: "「#{@child.child_name}」を削除しました"
+    redirect_to children_path, notice: "「#{@child.child_name}」さんを削除しました"
   end
 
 

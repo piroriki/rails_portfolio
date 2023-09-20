@@ -40,6 +40,7 @@ ja:
       symptom: 症状
       vaccination: 予防接種
       diary: 日記
+      diary_tag: 日記用タグ
       temperature: 体温
       head_circumference: 頭囲
       height: 身長
@@ -120,6 +121,11 @@ ja:
         title: タイトル
         content: 本文
         image: 画像
+        created_at: 登録日時
+        updated_at: 更新日時
+
+      diary_tag:
+        tag_name: タグ名称
         created_at: 登録日時
         updated_at: 更新日時
 

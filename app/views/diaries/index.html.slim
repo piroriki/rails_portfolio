@@ -25,7 +25,8 @@ table.table.table-hover
       tr 
         td = link_to diary.title, diary_path(diary) 
         td = diary.content 
-        //td = diary.diary_tag.tag_name
+        - diary.diary_tags.each do |d|
+          td = d.tag_name
         td = l diary.created_at
         td
           = link_to '編集', edit_diary_path(diary), class:'btn btn-primary mr-3'

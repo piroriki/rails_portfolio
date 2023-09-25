@@ -37,7 +37,7 @@ class MealsController < ApplicationController
 
   def destroy
     @meal.destroy
-    redirect_to meals_path, notice: '削除完了しました'
+    redirect_to meals_path, notice: '削除完了しました', status: :see_other
   end
 
   private

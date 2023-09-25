@@ -19,4 +19,4 @@ table.table.table-hover
         td = l bath.created_at
         td
           = link_to '編集', edit_bath_path(bath), class:'btn btn-primary mr-3'
-          = link_to '削除', bath_path(bath), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'
+          = link_to '削除', bath_path(bath), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'

@@ -19,5 +19,6 @@ table.table.table-hover
         td = child.human_attribute_enum(:gender)
         td = l child.created_at 
         td = l child.updated_at 
-          = link_to '編集', edit_child_path(child), class: 'btn btn-primary mr-3'
-          = link_to '削除', child_path(child), data: { turbo_method: :delete, turbo_confirm: '#{child.child_name}を本当に削除してもよろしいですか？' }, class: 'btn btn-danger'
+        td
+          = link_to '編集', edit_child_path(id: @children.id), class: 'btn btn-primary mr-3'
+          = link_to '削除', child_path(id: @children.id), data: { turbo_method: :delete, turbo_confirm: '#{child.child_name}さんを本当に削除してもよろしいですか？' }, class: 'btn btn-danger'

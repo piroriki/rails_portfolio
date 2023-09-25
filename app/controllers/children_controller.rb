@@ -1,5 +1,6 @@
 class ChildrenController < ApplicationController
 
+  before_action :set_child, only: [:show, :edit, :update, :destroy]
   protect_from_forgery with: :exception, only: :create
 
   # パンくずリストを追加する
@@ -26,15 +27,12 @@ class ChildrenController < ApplicationController
   end
 
   def show
-    @child = Child.find(params[:id])
   end
 
   def edit
-    @child = Child.find(params[:id])
   end
 
   def update
-    @child = Child.find(params[:id])
 
     if @child.update(child_params)
       redirect_to children_path, notice: "「#{@child.child_name}」さんを更新しました"
@@ -49,8 +47,6 @@ class ChildrenController < ApplicationController
   end
 
   def destroy
-    @child = Child.find(params[:id])
-
     @child.destroy
     redirect_to children_path, notice: "「#{@child.child_name}」さんを削除しました"
   end
@@ -60,6 +56,10 @@ class ChildrenController < ApplicationController
 
   def child_params
     params.require(:child).permit(:child_name, :age, :gender).merge(user_id: current_user.id)
+  end
+
+  def set_child
+    @child = current_user.children.find(params[id: @child.child_id])
   end
 
 end

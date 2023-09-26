@@ -7,7 +7,7 @@ table.table.table-hover
   tbody 
     tr 
       th = Child.human_attribute_name(:id)
-      td = @child.id
+      td = @child.ids
     tr 
       th = Child.human_attribute_name(:child_name)
       td = @child.child_name
@@ -24,5 +24,5 @@ table.table.table-hover
       th = Child.human_attribute_name(:updated_at)
       td = l @child.updated_at
 
-= link_to '編集', edit_child_path, class: 'btn btn-primary mr-3'
-= link_to '削除', child_path, data: { turbo_method: :delete, turbo_confirm: '「#{@child.child_name}」さんを本当に削除してもよろしいですか？' }, class: 'btn btn-danger'
+= link_to '編集', edit_child_path(@child), class: 'btn btn-primary mr-3'
+= link_to '削除', child_path(@child), data: { turbo_method: :delete, turbo_confirm: "「#{@child.child_name}」さんを本当に削除してもよろしいですか？" }, class: 'btn btn-danger'

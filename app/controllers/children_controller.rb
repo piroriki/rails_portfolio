@@ -15,10 +15,9 @@ class ChildrenController < ApplicationController
   end
 
   def create
-    @child = Child.new(child_params)
+    @child = current_user.children.build(child_params)
 
     if @child.save
-      byebug
       redirect_to root_path(@child), notice: "「#{@child.child_name}」さんを登録しました"
     else
       render :new, status: :unprocessable_entity
@@ -59,7 +58,8 @@ class ChildrenController < ApplicationController
   end
 
   def set_child
-    @child = current_user.children.find(params[id: @child.child_id])
+    @user = current_user
+    @child = @user.children.find(params[id: ])
   end
 
 end

@@ -15,7 +15,8 @@ class User < ApplicationRecord
     has_many :heights, dependent: :destroy
     has_many :weights, dependent: :destroy
 
-    has_many :child_relations, dependent: :destroy, foreign_key: 'user_id'
+    # childモデルとの中間テーブル設定
+    has_many :child_relations, dependent: :destroy
     has_many :children, through: :child_relations, source: :child
 
     validates :name, presence: true, length: { maximum: 50 }

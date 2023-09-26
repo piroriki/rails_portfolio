@@ -1,6 +1,7 @@
 class Child < ApplicationRecord
 
-    has_many :child_relations, dependent: :destroy, foreign_key: 'child_id'
+    # userモデルとの中間テーブル設定
+    has_many :child_relations, dependent: :destroy
     has_many :users, through: :child_relations, source: :user
 
     # enum用に変数定義する

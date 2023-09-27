@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
 
-    # 各モデルとの関連づけ
+    # 各モデルとの関連づけ(1対N)
     has_many :milks, dependent: :destroy
     has_many :meals, dependent: :destroy
     has_many :baths, dependent: :destroy
@@ -15,9 +15,9 @@ class User < ApplicationRecord
     has_many :heights, dependent: :destroy
     has_many :weights, dependent: :destroy
 
-    # childモデルとの中間テーブル設定
-    has_many :child_relations, dependent: :destroy
-    has_many :children, through: :child_relations, source: :child
+    # 中間テーブル設定
+    has_many :groups, dependent: :destroy
+    has_many :families, through: :groups, source: :family
 
     validates :name, presence: true, length: { maximum: 50 }
     validates :email, presence: true, uniqueness: true, length: { maximum: 100 }

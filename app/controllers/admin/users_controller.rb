@@ -9,12 +9,14 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @group = Group.find(params[:family_id])
 
     if @user.save
       # ユーザー登録完了メール送信処理を追加
       CoyellMailer.user_creation_email(@user).deliver_now
       
-      redirect_to root_path(@user), notice: "ユーザー「#{@user.name}」を登録しました"
+      @group.families << @user
+      redirect_to root_path(@user), notice: "ユーザー「#{@user.name}」さんを登録しました"
     else
       render :new, status: :unprocessable_entity
     end

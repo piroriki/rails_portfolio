@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
       CoyellMailer.user_creation_email(@user).deliver_now
       
       @group.families << @user
-      redirect_to root_path(@user), notice: "ユーザー「#{@user.name}」さんを登録しました"
+      redirect_to root_path(@user), notice: "「#{@user.name}」さんを登録しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を更新しました"
+      redirect_to admin_users_path, notice: "「#{@user.name}」さんを更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -49,7 +49,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.destroy
-    redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を削除しました"
+    redirect_to admin_users_path, notice: "「#{@user.name}」さんを削除しました"
   end
 
 

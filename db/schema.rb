@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_014007) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_27_014204) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -108,6 +108,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_014007) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.bigint "family_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_groups_on_family_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "head_circumferences", force: :cascade do |t|
@@ -217,6 +226,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_014007) do
   add_foreign_key "diary_tag_relations", "diaries"
   add_foreign_key "diary_tag_relations", "diary_tags"
   add_foreign_key "execretions", "users"
+  add_foreign_key "groups", "families"
+  add_foreign_key "groups", "users"
   add_foreign_key "head_circumferences", "users"
   add_foreign_key "heights", "users"
   add_foreign_key "meals", "users"

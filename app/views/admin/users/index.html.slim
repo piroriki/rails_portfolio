@@ -16,7 +16,7 @@ table.table.table-hover
   tbody 
     - @users.each do |user|
       tr 
-        td = link_to user.name, [:admin, user]
+        td = link_to user.name, admin_user_path(user)
         td = user.email 
         td = user.admin? ? 'あり' : 'なし'
         td = l user.created_at 

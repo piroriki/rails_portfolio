@@ -3,12 +3,11 @@ class FamiliesController < ApplicationController
   before_action :set_family, only: [:edit, :update, :destroy]
 
   def new
-    @user = current_user
-    @family = @user.families.build(family_params)
+    @family = current_user.families.build(family_params)
   end
 
   def create
-    @family = @user.families.build(family_params)
+    @family = current_user.families.build(family_params)
 
     if @family.save
       @user.families << @family
@@ -28,6 +27,11 @@ class FamiliesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @family.destroy
+    redirect_to root_path, notice: "#{@family.name}の削除が完了しました"
   end
 
   private

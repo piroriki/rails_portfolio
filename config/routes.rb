@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'families/new'
-  get 'families/edit'
-  get 'family/new'
-  get 'family/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'
@@ -25,6 +21,8 @@ Rails.application.routes.draw do
   root to: 'tops#index' # トップページのみ別コントローラで作成
 
   resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries, :temperatures, :head_circumferences, :heights, :weights, :children
+
+  resources :families, only: [:new, :edit]
 
   resource :groups, only: [:destroy]
   

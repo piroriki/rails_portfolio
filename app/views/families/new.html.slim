@@ -1,2 +1,6 @@
-h1 Families#new
-p Find me in app/views/families/new.html.slim
+h1 家族グループの新規登録
+
+.nav.justify-content-end 
+  = link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
+
+= render partial: 'form', locals: { family: @family }

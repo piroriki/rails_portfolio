@@ -1,2 +1,6 @@
-h1 Families#edit
-p Find me in app/views/families/edit.html.slim
+h1 家族グループの更新
+
+.nav.justify-content-end 
+  = link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
+
+= render partial: 'form', locals: { family: @family }

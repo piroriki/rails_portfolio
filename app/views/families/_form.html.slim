@@ -1,0 +1,12 @@
+- if family.errors.present?
+  ul#error_explanation 
+    - family.errors.full_messages.each do |message|
+      li =message 
+
+= form_with model: family, local: true do |f|
+
+    .form-group 
+      = f.label :name
+      = f.text_field :name, class: 'form-control', id: 'family_name'
+      
+    = f.submit '登録する', class: 'btn btn-primary'

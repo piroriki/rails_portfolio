@@ -16,9 +16,7 @@ class User < ApplicationRecord
     has_many :weights, dependent: :destroy
 
     # 中間テーブル設定
-    has_many :groups, dependent: :destroy
-    has_many :families, through: :groups, source: :family
-    accepts_nested_attributes_for :groups, allow_destroy: true
+    has_and_belongs_to_many :families, dependent: :destroy
 
     validates :name, presence: true, length: { maximum: 50 }
     validates :email, presence: true, uniqueness: true, length: { maximum: 100 }

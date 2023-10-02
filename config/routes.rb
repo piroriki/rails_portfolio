@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'families/new'
+  get 'families/edit'
+  get 'family/new'
+  get 'family/edit'
 
   # ログイン・ログアウト機能はsessionsコントローラで作成
   get '/login', to: 'sessions#new'

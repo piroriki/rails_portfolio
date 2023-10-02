@@ -34,6 +34,7 @@ ja:
       milk: ミルク
       meal: 食事
       user: ユーザー
+      family: 家族
       bath: お風呂
       medicine: お薬
       execretion: うんちおしっこ
@@ -56,6 +57,9 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         admin: 管理者権限
+
+      family:
+        name: 家族グループ名
         
       milk:
         id: ID

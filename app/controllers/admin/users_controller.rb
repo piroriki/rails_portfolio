@@ -4,12 +4,11 @@ class Admin::UsersController < ApplicationController
   protect_from_forgery with: :exception, only: :create
 
   def new
-    @user = Form::User.new
-    #@user.group.build
+    @user = User.new
   end
 
   def create
-    @user = Form::User.new(user_params)
+    @user = User.new(user_params)
 
     if @user.save
 
@@ -25,15 +24,15 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = Form::User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = Form::User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = Form::User.find(params[:id])
+    @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
       redirect_to admin_users_path, notice: "「#{@user.name}」さんを更新しました"
@@ -43,21 +42,20 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = Form::User.all
+    @users = User.all
   end
 
   def destroy
-    @user = Form::User.find(params[:id])
+    @user = User.find(params[:id])
 
     @user.destroy
     redirect_to admin_users_path, notice: "「#{@user.name}」さんを削除しました"
   end
 
-
   private
 
   def user_params
-    params.require(:form_user).permit(Form::User::REGISTRABLE_ATTRIBUTES + [groups_attributes: Form::Group::REGISTRABLE_ATTRIBUTES])
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end

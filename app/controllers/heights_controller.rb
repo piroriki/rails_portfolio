@@ -90,8 +90,4 @@ class HeightsController < ApplicationController
     @height = current_user.heights.find(params[:id])
   end
   
-  # def set_ransack_auth_object
-  #   current_user.admin? ? :admin : nil
-  # end
-  
 end

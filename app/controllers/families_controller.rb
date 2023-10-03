@@ -2,15 +2,19 @@ class FamiliesController < ApplicationController
 
   before_action :set_family, only: [:edit, :update, :destroy]
 
+  def index
+    @families =Family.all
+  end
+
   def new
-    @family = current_user.families.build(family_params)
+    @family = Family.new
   end
 
   def create
-    @family = current_user.families.build(family_params)
+    @family = current_user.families.new(family_params)
 
     if @family.save
-      @user.families << @family
+      current_user.families << @family
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
@@ -37,7 +41,7 @@ class FamiliesController < ApplicationController
   private
 
     def family_params
-      params.require(:family).permit(:name).merge(user_id: current_user.id)
+      params.require(:family).permit(:name)
     end
 
     def set_family

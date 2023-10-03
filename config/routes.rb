@@ -22,9 +22,7 @@ Rails.application.routes.draw do
 
   resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries, :temperatures, :head_circumferences, :heights, :weights, :children
 
-  resources :families, only: [:new, :edit]
-
-  resource :groups, only: [:destroy]
+  resources :families, only: [:new, :create, :edit, :destroy, :index]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

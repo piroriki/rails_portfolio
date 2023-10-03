@@ -3,7 +3,7 @@
     - execretion.errors.full_messages.each do |message|
       li = message
 
-= form_with model: execretion, local: true do |f|
+= form_with model: @execretion, local: true do |f|
 
     .form-group 
       = f.radio_button :kinds, :poop

@@ -23,6 +23,7 @@ html
           li.nav-item = link_to '記録一覧', summary_path, class: 'nav-link'
           li.nav-item = link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
           li.nav-item = link_to '子供一覧', children_path, class: 'nav-link'
+          li.nav-item = link_to '家族グループ登録', new_family_path, class: 'nav-link'
           li.nav-item = link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link'
         - else 
           li.nav-item = link_to 'ログイン', login_path, class: 'nav-link'

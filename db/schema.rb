@@ -111,8 +111,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_221608) do
   end
 
   create_table "families_users", id: false, force: :cascade do |t|
-    t.bigint "family_id"
-    t.bigint "user_id"
+    t.bigint "family_id", null: false
+    t.bigint "user_id", null: false
     t.index ["family_id"], name: "index_families_users_on_family_id"
     t.index ["user_id"], name: "index_families_users_on_user_id"
   end

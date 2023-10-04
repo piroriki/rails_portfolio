@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_02_221608) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_04_040237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -135,6 +135,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_221608) do
     t.index ["user_id"], name: "index_heights_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "diary_id", null: false
+    t.index ["diary_id"], name: "index_likes_on_diary_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "meals", force: :cascade do |t|
     t.string "kinds", null: false
     t.text "amount", null: false
@@ -226,6 +233,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_221608) do
   add_foreign_key "execretions", "users"
   add_foreign_key "head_circumferences", "users"
   add_foreign_key "heights", "users"
+  add_foreign_key "likes", "diaries"
+  add_foreign_key "likes", "users"
   add_foreign_key "meals", "users"
   add_foreign_key "medicines", "users"
   add_foreign_key "milks", "users"

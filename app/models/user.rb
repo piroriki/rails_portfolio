@@ -9,13 +9,16 @@ class User < ApplicationRecord
     has_many :execretions, dependent: :destroy
     has_many :symptoms, dependent: :destroy
     has_many :vaccinations, dependent: :destroy
-    has_many :diaries, dependent: :destroy
     has_many :temperatures, dependent: :destroy
     has_many :head_circumferences, dependent: :destroy
     has_many :heights, dependent: :destroy
     has_many :weights, dependent: :destroy
 
-    # 中間テーブル設定
+    # 中間テーブルありの多対多の関連づけ
+    has_many :diaries, dependent: :destroy
+    has_many :likes, dependent: :destroy
+
+    # 中間テーブル設定(中間テーブルで特別なカラムを持たせない場合のため、下記関連づけを使用)
     has_and_belongs_to_many :families, dependent: :destroy
 
     validates :name, presence: true, length: { maximum: 50 }

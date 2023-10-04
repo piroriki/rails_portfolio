@@ -2,9 +2,12 @@ class Diary < ApplicationRecord
 
     belongs_to :user
 
-    # タグの関連付けのみ記載しておく
+    # タグの関連付け
     has_many :diary_tag_relations, dependent: :destroy
     has_many :diary_tags, through: :diary_tag_relations, source: :diary_tag
+
+    # いいねの関連づけ
+    has_many :likes
 
     # activestorageと紐づける
     has_one_attached :image
@@ -38,4 +41,9 @@ class Diary < ApplicationRecord
         end
     end
      
+    # いいねがされたかどうかの判定
+    def liked_by?(user)
+        likes.where(user_id: user.id).exists?
+    end
+
 end

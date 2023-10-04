@@ -5,7 +5,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = Like.new(likes_params)
+    @like = Like.new(user_id: current_user.id, diary_id: params[:deary_id])
 
     if @likes.save
       rederect_to diaries_path, notice: 'いいねを追加しました'
@@ -15,10 +15,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @like = current_user.likes.find(params[:id])
+    @like.destroy
+    redirect_to diaries_path, notice: 'いいねを削除しました'
   end
 
-  private
-
-  def likes_params
-    params.require(:like).permit()
 end

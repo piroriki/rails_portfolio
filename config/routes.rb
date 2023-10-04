@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   root to: 'tops#index' # トップページのみ別コントローラで作成
 
-  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :diaries, :temperatures, :head_circumferences, :heights, :weights, :children
+  resources :milks, :meals, :baths, :medicines, :execretions, :symptoms, :vaccinations, :temperatures, :head_circumferences, :heights, :weights, :children
+
+  resources :diaries do
+    resource :likes, only: [:new, :create, :destroy]
+  end
 
   resources :families, only: [:new, :create, :edit, :destroy, :index]
   

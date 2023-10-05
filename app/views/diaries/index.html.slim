@@ -18,6 +18,7 @@ table.table.table-hover
       th = Diary.human_attribute_name(:content)
       th = DiaryTag.human_attribute_name(:tag_name)
       th = Diary.human_attribute_name(:created_at)
+      th
       th 
     
   tbody 
@@ -31,4 +32,38 @@ table.table.table-hover
         td
           = link_to '編集', edit_diary_path(diary), class:'btn btn-primary mr-3'
           = link_to '削除', diary_path(diary), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'
+
+        td 
+          - if current_user
+          // ユーザーがログインしている場合、いいねボタンを表示させる
+ 
+            - if diary.likes_by?(current_user)
+
+            // 既にいいねされていれば解除ボタン
+
+              = link_to diary.likes.count, diary_likes_path(diary.id), class: 'form-control', method: :delete do 
+                |  いいね解除：
+                span
+              end
+
+            else
+            // いいねされていなければ登録ボタン
+
+              = link_to diary.likes.count, diary_likes_path(diary.id), class: 'form-control', method: :post do 
+                |  いいね登録：
+                span 
+              end
+              
+            end
+
+          else
+          // ログインしていなければ、いいねの登録数を表示
+
+            = diary.likes.count do 
+              | いいねの数
+              span 
+            end
+          
+          end 
+  
     end

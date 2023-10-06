@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     @like = current_user.likes.build(diary_id: params[:diary_id])
 
     if @like.save
-      rederect_to diaries_path, notice: 'いいねを追加しました'
+      redirect_to diaries_path, notice: 'いいねを追加しました'
     else
       render :new, status: :unprocessable_entity
     end

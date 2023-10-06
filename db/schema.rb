@@ -139,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_221740) do
     t.bigint "user_id", null: false
     t.bigint "diary_id", null: false
     t.index ["diary_id"], name: "index_likes_on_diary_id"
+    t.index ["user_id", "diary_id"], name: "index_likes_on_user_id_and_diary_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 

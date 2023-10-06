@@ -18,8 +18,8 @@ table.table.table-hover
       th = Diary.human_attribute_name(:content)
       th = DiaryTag.human_attribute_name(:tag_name)
       th = Diary.human_attribute_name(:created_at)
-      th
-      th
+      th = '編集/削除'
+      th = 'いいね'
     
   tbody 
     - @diaries.each do |diary|
@@ -33,20 +33,20 @@ table.table.table-hover
           = link_to '編集', edit_diary_path(diary), class:'btn btn-primary mr-3'
           = link_to '削除', diary_path(diary), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'
 
-        td 
+        td
           //- if current_user
           // ユーザーがログインしている場合、いいねボタンを表示させる
-        //- if diary.liked_by?(current_user)
+          //- if diary.liked_by?(current_user)
           // 既にいいねされていれば解除ボタン
-          = link_to "いいね削除：", diary_likes_path(diary.id), data: { turbo_method: :delete }, class: 'btn btn-danger'
-          = "(#{diary.likes.count})"
-          span
-        //- else
+            = link_to "いいね削除：", diary_likes_path(diary.id), data: { turbo_method: :delete }, class: 'btn btn-danger'
+          //= "(#{diary.likes.count})"
+            span
+          //- else
           // いいねされていなければ登録ボタン
-          = link_to "いいね登録：", diary_likes_path(diary.id), data: { turbo_method: :post }, class: 'btn btn-primary'
-          = "(#{diary.likes.count})"
-          span 
-        //end
+            = link_to "いいね登録：", diary_likes_path(diary.id), data: { turbo_method: :post }, class: 'btn btn-primary'
+            = "(#{diary.likes.count})"
+            span 
+          //end
 
           //- else
           // ログインしていなければ、いいねの登録数を表示

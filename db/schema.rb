@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_04_040237) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_06_221740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -173,6 +173,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_040237) do
     t.index ["user_id"], name: "index_milks_on_user_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "following_id", null: false
+    t.bigint "follower_id", null: false
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_relationships_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
   create_table "symptoms", force: :cascade do |t|
     t.string "kinds", null: false
     t.datetime "time", null: false
@@ -238,6 +246,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_040237) do
   add_foreign_key "meals", "users"
   add_foreign_key "medicines", "users"
   add_foreign_key "milks", "users"
+  add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "relationships", "users", column: "following_id"
   add_foreign_key "symptoms", "users"
   add_foreign_key "temperatures", "users"
   add_foreign_key "vaccinations", "users"

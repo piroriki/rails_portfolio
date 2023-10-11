@@ -20,6 +20,7 @@ table.table.table-hover
       th = Diary.human_attribute_name(:created_at)
       th = '編集/削除'
       th = 'いいね'
+      th = 'フォロー'
     
   tbody 
     - @diaries.each do |diary|
@@ -34,26 +35,31 @@ table.table.table-hover
           = link_to '削除', diary_path(diary), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger'
 
         td
-          //- if current_user
+          - if current_user
           // ユーザーがログインしている場合、いいねボタンを表示させる
-          //- if diary.liked_by?(current_user)
-          // 既にいいねされていれば解除ボタン
-            = link_to "いいね削除：", diary_likes_path(diary.id), data: { turbo_method: :delete }, class: 'btn btn-danger'
-          //= "(#{diary.likes.count})"
-            span
-          //- else
-          // いいねされていなければ登録ボタン
-            = link_to "いいね登録：", diary_likes_path(diary.id), data: { turbo_method: :post }, class: 'btn btn-primary'
-            = "(#{diary.likes.count})"
-            span 
-          //end
+          
+            - if diary.liked_by?(current_user)
 
-          //- else
+          // 既にいいねされていれば解除ボタン
+
+            = link_to "いいね削除", diary_likes_path(diary.id), data: { turbo_method: :delete }, class: 'btn btn-danger'
+          //= "(#{diary.likes.count})"
+
+            - else
+          // いいねされていなければ登録ボタン  
+
+            = link_to "いいね登録", diary_likes_path(diary.id), data: { turbo_method: :post }, class: 'btn btn-primary'
+          //= "(#{diary.likes.count})"
+
+          - else
           // ログインしていなければ、いいねの登録数を表示
-            = diary.likes.count do 
-              | いいねの数
-              span 
-            end
-          //end 
+          = "いいねの数：#{diary.likes.count}件"
+
+        td 
+          - if current_user.id != diary.user_id 
+            - if diary.user.followed_by?(current_user)
+              = link_to 'フォロー済み', admin_user_relationships_path(diary.user.id), data: { turbo_method: :delete }
+            - else 
+              = link_to 'フォローする',admin_user_relationships_path(diary.user.id),data: { turbo_method: :post }
   
     end

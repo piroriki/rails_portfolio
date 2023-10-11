@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users do
       resource :relationships, only: [:create, :destroy]
+      
+      # フォローリスト、フォロワーリスト表示用
       get :follows, on: :member
       get :followers, on: :member
+    end
   end
 
   root to: 'tops#index' # トップページのみ別コントローラで作成

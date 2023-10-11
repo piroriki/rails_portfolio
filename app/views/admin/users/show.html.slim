@@ -18,14 +18,12 @@ table.table.table-hover
       th = User.human_attribute_name(:admin)
       td = @user.admin? ? 'あり' : 'なし'
     tr 
-      th = Family.human_attribute_name(:name) 
-      td = @user.group.name
-    tr 
-      th = User.human_attribute_name(:created_at)
-      td = l @user.created_at
-    tr 
-      th = User.human_attribute_name(:updated_at)
-      td = l @user.updated_at
+      th
+    - if current_user != @user
+      - if @user.followed_by?(current_user) 
+        td = link_to 'フォロー済み', admin_user_relationships_path(@user.id), data: { turbo_method: :delete }
+      - else 
+        td = link_to 'フォローする', admin_user_relationships_path(@user.id), data: { turbo_method: :post }
 
 = link_to '編集', edit_admin_user_path(@user), class: 'btn btn-primary mr-3'
 = link_to '削除', admin_user_path(@user), data: { turbo_method: :delete, turbo_confirm: "「#{@user.name}」さんを本当に削除してもよろしいですか？" }, class: 'btn btn-danger'

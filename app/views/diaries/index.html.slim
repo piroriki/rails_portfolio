@@ -42,7 +42,7 @@ table.table.table-hover
 
           // 既にいいねされていれば解除ボタン
 
-            = link_to "いいね削除", diary_likes_path(diary.id), data: { turbo_method: :delete }, class: 'btn btn-danger'
+            = link_to "いいね解除", diary_likes_path(diary.id), data: { turbo_method: :delete }, class: 'btn btn-danger'
           //= "(#{diary.likes.count})"
 
             - else
@@ -58,8 +58,8 @@ table.table.table-hover
         td 
           - if current_user.id != diary.user_id 
             - if diary.user.followed_by?(current_user)
-              = link_to 'フォロー済み', admin_user_relationships_path(diary.user.id), data: { turbo_method: :delete }
+              = button_to 'フォロー解除', admin_user_relationships_path(diary.user.id), data: { turbo_method: :delete }
             - else 
-              = link_to 'フォローする',admin_user_relationships_path(diary.user.id),data: { turbo_method: :post }
+              = button_to 'フォロー',admin_user_relationships_path(diary.user.id),data: { turbo_method: :post }
   
     end
